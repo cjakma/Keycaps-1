@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		68B7C26F1F27B5FF002CC5AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7C26E1F27B5FF002CC5AA /* AppDelegate.swift */; };
+		68B7C2711F27B5FF002CC5AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7C2701F27B5FF002CC5AA /* ViewController.swift */; };
+		68B7C2741F27B5FF002CC5AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68B7C2721F27B5FF002CC5AA /* Main.storyboard */; };
+		68B7C2761F27B5FF002CC5AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B7C2751F27B5FF002CC5AA /* Assets.xcassets */; };
+		68B7C2791F27B5FF002CC5AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68B7C2771F27B5FF002CC5AA /* LaunchScreen.storyboard */; };
+		68B7C2871F27B620002CC5AA /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7C2861F27B620002CC5AA /* KeyboardViewController.swift */; };
+		68B7C28B1F27B620002CC5AA /* Keycaps-Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 68B7C2841F27B620002CC5AA /* Keycaps-Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		68B7C2911F27B644002CC5AA /* KeycapsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68B7C2901F27B644002CC5AA /* KeycapsStoryboard.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		68B7C2891F27B620002CC5AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68B7C2631F27B5FF002CC5AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68B7C2831F27B620002CC5AA;
+			remoteInfo = "Keycaps-Keyboard";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		68B7C28F1F27B620002CC5AA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				68B7C28B1F27B620002CC5AA /* Keycaps-Keyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		68B7C26B1F27B5FF002CC5AA /* Keycaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keycaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		68B7C26E1F27B5FF002CC5AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		68B7C2701F27B5FF002CC5AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		68B7C2731F27B5FF002CC5AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		68B7C2751F27B5FF002CC5AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		68B7C2781F27B5FF002CC5AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		68B7C27A1F27B5FF002CC5AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68B7C2841F27B620002CC5AA /* Keycaps-Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Keycaps-Keyboard.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		68B7C2861F27B620002CC5AA /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		68B7C2881F27B620002CC5AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68B7C2901F27B644002CC5AA /* KeycapsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KeycapsStoryboard.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		68B7C2681F27B5FF002CC5AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68B7C2811F27B620002CC5AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		68B7C2621F27B5FF002CC5AA = {
+			isa = PBXGroup;
+			children = (
+				68B7C26D1F27B5FF002CC5AA /* Keycaps */,
+				68B7C2851F27B620002CC5AA /* Keycaps-Keyboard */,
+				68B7C26C1F27B5FF002CC5AA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		68B7C26C1F27B5FF002CC5AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				68B7C26B1F27B5FF002CC5AA /* Keycaps.app */,
+				68B7C2841F27B620002CC5AA /* Keycaps-Keyboard.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		68B7C26D1F27B5FF002CC5AA /* Keycaps */ = {
+			isa = PBXGroup;
+			children = (
+				68B7C26E1F27B5FF002CC5AA /* AppDelegate.swift */,
+				68B7C2701F27B5FF002CC5AA /* ViewController.swift */,
+				68B7C2721F27B5FF002CC5AA /* Main.storyboard */,
+				68B7C2751F27B5FF002CC5AA /* Assets.xcassets */,
+				68B7C2771F27B5FF002CC5AA /* LaunchScreen.storyboard */,
+				68B7C27A1F27B5FF002CC5AA /* Info.plist */,
+			);
+			path = Keycaps;
+			sourceTree = "<group>";
+		};
+		68B7C2851F27B620002CC5AA /* Keycaps-Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				68B7C2861F27B620002CC5AA /* KeyboardViewController.swift */,
+				68B7C2881F27B620002CC5AA /* Info.plist */,
+				68B7C2901F27B644002CC5AA /* KeycapsStoryboard.storyboard */,
+			);
+			path = "Keycaps-Keyboard";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		68B7C26A1F27B5FF002CC5AA /* Keycaps */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68B7C27D1F27B5FF002CC5AA /* Build configuration list for PBXNativeTarget "Keycaps" */;
+			buildPhases = (
+				68B7C2671F27B5FF002CC5AA /* Sources */,
+				68B7C2681F27B5FF002CC5AA /* Frameworks */,
+				68B7C2691F27B5FF002CC5AA /* Resources */,
+				68B7C28F1F27B620002CC5AA /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				68B7C28A1F27B620002CC5AA /* PBXTargetDependency */,
+			);
+			name = Keycaps;
+			productName = Keycaps;
+			productReference = 68B7C26B1F27B5FF002CC5AA /* Keycaps.app */;
+			productType = "com.apple.product-type.application";
+		};
+		68B7C2831F27B620002CC5AA /* Keycaps-Keyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68B7C28C1F27B620002CC5AA /* Build configuration list for PBXNativeTarget "Keycaps-Keyboard" */;
+			buildPhases = (
+				68B7C2801F27B620002CC5AA /* Sources */,
+				68B7C2811F27B620002CC5AA /* Frameworks */,
+				68B7C2821F27B620002CC5AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Keycaps-Keyboard";
+			productName = "Keycaps-Keyboard";
+			productReference = 68B7C2841F27B620002CC5AA /* Keycaps-Keyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		68B7C2631F27B5FF002CC5AA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Screen Sized";
+				TargetAttributes = {
+					68B7C26A1F27B5FF002CC5AA = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = YU395SJ684;
+						ProvisioningStyle = Automatic;
+					};
+					68B7C2831F27B620002CC5AA = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = YU395SJ684;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 68B7C2661F27B5FF002CC5AA /* Build configuration list for PBXProject "Keycaps" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 68B7C2621F27B5FF002CC5AA;
+			productRefGroup = 68B7C26C1F27B5FF002CC5AA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				68B7C26A1F27B5FF002CC5AA /* Keycaps */,
+				68B7C2831F27B620002CC5AA /* Keycaps-Keyboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		68B7C2691F27B5FF002CC5AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68B7C2791F27B5FF002CC5AA /* LaunchScreen.storyboard in Resources */,
+				68B7C2761F27B5FF002CC5AA /* Assets.xcassets in Resources */,
+				68B7C2741F27B5FF002CC5AA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68B7C2821F27B620002CC5AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68B7C2911F27B644002CC5AA /* KeycapsStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		68B7C2671F27B5FF002CC5AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68B7C2711F27B5FF002CC5AA /* ViewController.swift in Sources */,
+				68B7C26F1F27B5FF002CC5AA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68B7C2801F27B620002CC5AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68B7C2871F27B620002CC5AA /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		68B7C28A1F27B620002CC5AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 68B7C2831F27B620002CC5AA /* Keycaps-Keyboard */;
+			targetProxy = 68B7C2891F27B620002CC5AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		68B7C2721F27B5FF002CC5AA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68B7C2731F27B5FF002CC5AA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		68B7C2771F27B5FF002CC5AA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68B7C2781F27B5FF002CC5AA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		68B7C27B1F27B5FF002CC5AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		68B7C27C1F27B5FF002CC5AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		68B7C27E1F27B5FF002CC5AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YU395SJ684;
+				INFOPLIST_FILE = Keycaps/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.screensized.Keycaps;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		68B7C27F1F27B5FF002CC5AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YU395SJ684;
+				INFOPLIST_FILE = Keycaps/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.screensized.Keycaps;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		68B7C28D1F27B620002CC5AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = YU395SJ684;
+				INFOPLIST_FILE = "Keycaps-Keyboard/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.screensized.Keycaps.Keycaps-Keyboard";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		68B7C28E1F27B620002CC5AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = YU395SJ684;
+				INFOPLIST_FILE = "Keycaps-Keyboard/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.screensized.Keycaps.Keycaps-Keyboard";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		68B7C2661F27B5FF002CC5AA /* Build configuration list for PBXProject "Keycaps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68B7C27B1F27B5FF002CC5AA /* Debug */,
+				68B7C27C1F27B5FF002CC5AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68B7C27D1F27B5FF002CC5AA /* Build configuration list for PBXNativeTarget "Keycaps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68B7C27E1F27B5FF002CC5AA /* Debug */,
+				68B7C27F1F27B5FF002CC5AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		68B7C28C1F27B620002CC5AA /* Build configuration list for PBXNativeTarget "Keycaps-Keyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68B7C28D1F27B620002CC5AA /* Debug */,
+				68B7C28E1F27B620002CC5AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 68B7C2631F27B5FF002CC5AA /* Project object */;
+}
