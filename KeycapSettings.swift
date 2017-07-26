@@ -10,46 +10,102 @@ import Foundation
 import UIKit
 
 struct KeycapSettings {
-    // font-family
-    // background-color
-    // font-size
-    // keycap-color
-    // legend-color
-    // radius-level
-    // border-thickness
-    // border-color
-    
     ////
     // Extras
     ////
-    // Modifier Keys only changes
-    // spacebar only changes
     // AEK ii font
     // flat vs button
+    // Predesigned Templates
     
     let backgroundColorKey: String = "fontFamily"
     let borderColorKey:     String = "borderColor"
     let borderSizeKey:      String = "borderSize"
+    let borderRadiusKey:    String = "borderRadius"
     let fontFamilyKey:      String = "fontFamily"
     let fontSizeKey:        String = "fontSize"
     let keycapColorKey:     String = "keycapColor"
     let legendColorKey:     String = "legendColor"
-    let radiusLevelKey:     String = "radiusLevel"
+    let modifiersColorKey:  String = "modifiersColor"
+    let spaceBarTextKey:    String = "spaceBarText"
     
-    func setBackgroundColor(color: UIColor) -> Void {
+    func setBackground(color: UIColor) -> Void {
         set(key: backgroundColorKey, to: color)
     }
     
-    func getBackgroundColor(key: String) -> UIColor {
-        return get(valueFor: fontFamilyKey) as! UIColor
+    func getBackgroundColor() -> UIColor {
+        return get(valueFor: backgroundColorKey) as! UIColor
     }
     
-    func setFontFamily(forLabel font: String) -> Void {
-        set(key: fontFamilyKey, to: font)
+    func setBorder(color: UIColor) -> Void {
+        set(key: borderColorKey, to: color)
     }
     
-    func getFontFamily(key: String) -> String {
+    func getBorderColor() -> UIColor {
+        return get(valueFor: borderColorKey) as! UIColor
+    }
+    
+    func setBorder(size: Int) -> Void {
+        set(key: borderSizeKey, to: size)
+    }
+    
+    func getBorderColor() -> Int {
+        return get(valueFor: borderSizeKey) as! Int
+    }
+    
+    func setBorder(radius: Int) -> Void {
+        set(key: borderRadiusKey, to: radius)
+    }
+    
+    func getBorderRadius() -> Int {
+        return get(valueFor: borderRadiusKey) as! Int
+    }
+    
+    func setFont(family: String) -> Void {
+        set(key: fontFamilyKey, to: family)
+    }
+    
+    func getFontFamily() -> String {
         return get(valueFor: fontFamilyKey) as! String
+    }
+    
+    func setFont(size: Int) -> Void {
+        set(key: fontSizeKey, to: size)
+    }
+    
+    func getFontSize() -> Int {
+        return get(valueFor: fontSizeKey) as! Int
+    }
+    
+    func setKeycap(color: UIColor) -> Void {
+        set(key: keycapColorKey, to: color)
+    }
+    
+    func getKeycapColor() -> UIColor {
+        return get(valueFor: keycapColorKey) as! UIColor
+    }
+    
+    func setLegend(color: UIColor) -> Void {
+        set(key: legendColorKey, to: color)
+    }
+    
+    func getLegendColor() -> UIColor {
+        return get(valueFor: legendColorKey) as! UIColor
+    }
+    
+    func setModifier(color: UIColor) -> Void {
+        set(key: modifiersColorKey, to: color)
+    }
+    
+    func getModifierColor() -> UIColor {
+       return get(valueFor: modifiersColorKey) as! UIColor
+    }
+    
+    func toggleShowSpacebarText(to: Bool) -> Void {
+        set(key: spaceBarTextKey, to: true)
+    }
+    
+    func getShowSpacebarText() -> Bool {
+        return get(valueFor: spaceBarTextKey) as! Bool
     }
     
     ////

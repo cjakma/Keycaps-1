@@ -29,7 +29,10 @@ class KeyboardViewController: UIInputViewController {
         
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         
-        for button in buttonCollection { styleKeycap(for: button) }
+        for button in buttonCollection {
+            styleKeycap(for: button)
+            styleLegendFont(for: button)
+        }
         
         let allButtons: [UIButton] = buttonCollection + modifierCollection
         for button in allButtons { styleBorder(for: button) }
@@ -69,5 +72,8 @@ class KeyboardViewController: UIInputViewController {
         button.backgroundColor = UIColor.darkGray
     }
     
+    func styleLegendFont(for button: UIButton) -> Void {
+        button.titleLabel!.font = UIFont(name: "Marker Felt", size: 20)
+    }
 
 }
