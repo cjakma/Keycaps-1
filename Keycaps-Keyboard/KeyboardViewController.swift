@@ -11,7 +11,9 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
 
     @IBOutlet weak var nextKeyboardButton: UIButton!
-
+    @IBOutlet var buttonCollection: [UIButton]!
+    @IBOutlet var modifierCollection: [UIButton]!
+    
     override func updateViewConstraints() {
         super.updateViewConstraints()
         
@@ -26,6 +28,11 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
         
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        
+        for button in buttonCollection { styleKeycap(for: button) }
+        
+        let allButtons: [UIButton] = buttonCollection + modifierCollection
+        for button in allButtons { styleBorder(for: button) }
         
     }
     
@@ -49,6 +56,17 @@ class KeyboardViewController: UIInputViewController {
             textColor = UIColor.black
         }
         self.nextKeyboardButton.setTitleColor(textColor, for: [])
+    }
+    
+    func styleBorder(for button: UIButton) -> Void {
+        button.layer.cornerRadius = 10
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderWidth = 2
+    }
+    
+    func styleKeycap(for button: UIButton) -> Void {
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor.darkGray
     }
     
 
