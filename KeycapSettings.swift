@@ -17,115 +17,117 @@ struct KeycapSettings {
     // flat vs button
     // Predesigned Templates
     
-    let backgroundColorKey: String = "fontFamily"
-    let borderColorKey:     String = "borderColor"
-    let borderSizeKey:      String = "borderSize"
-    let borderRadiusKey:    String = "borderRadius"
-    let fontFamilyKey:      String = "fontFamily"
-    let fontSizeKey:        String = "fontSize"
-    let keycapColorKey:     String = "keycapColor"
-    let legendColorKey:     String = "legendColor"
-    let modifiersColorKey:  String = "modifiersColor"
-    let spaceBarColorKey:   String = "spaceBarColor"
-    let spaceBarTextKey:    String = "spaceBarText"
+    static let backgroundColorKey: String = "fontFamily"
+    static let borderColorKey:     String = "borderColor"
+    static let borderSizeKey:      String = "borderSize"
+    static let borderRadiusKey:    String = "borderRadius"
+    static let fontFamilyKey:      String = "fontFamily"
+    static let fontSizeKey:        String = "fontSize"
+    static let keycapColorKey:     String = "keycapColor"
+    static let legendColorKey:     String = "legendColor"
+    static let modifiersColorKey:  String = "modifiersColor"
+    static let spaceBarColorKey:   String = "spaceBarColor"
+    static let spaceBarTextKey:    String = "spaceBarText"
     
-    func setBackground(color: UIColor) -> Void {
-        set(key: backgroundColorKey, to: color)
+    static func setBackground(colorString: String) -> Void {
+        if let nsColorString: NSString = colorString as NSString! {
+         set(key: backgroundColorKey, to: nsColorString)
+        }
     }
     
-    func getBackgroundColor() -> UIColor {
-        return get(valueFor: backgroundColorKey) as! UIColor
+    static func getBackgroundColor() -> String {
+        return get(valueFor: backgroundColorKey) as! String
     }
     
-    func setBorder(color: UIColor) -> Void {
-        set(key: borderColorKey, to: color)
+    static func setBorder(colorString: String) -> Void {
+        set(key: borderColorKey, to: colorString)
     }
     
-    func getBorderColor() -> UIColor {
-        return get(valueFor: borderColorKey) as! UIColor
+    static func getBorderColor() -> String {
+        return get(valueFor: borderColorKey) as! String
     }
     
-    func setBorder(size: Int) -> Void {
+    static func setBorder(size: Int) -> Void {
         set(key: borderSizeKey, to: size)
     }
     
-    func getBorderColor() -> Int {
+    static func getBorderColor() -> Int {
         return get(valueFor: borderSizeKey) as! Int
     }
     
-    func setBorder(radius: Int) -> Void {
+    static func setBorder(radius: Int) -> Void {
         set(key: borderRadiusKey, to: radius)
     }
     
-    func getBorderRadius() -> Int {
+    static func getBorderRadius() -> Int {
         return get(valueFor: borderRadiusKey) as! Int
     }
     
-    func setFont(family: String) -> Void {
+    static func setFont(family: String) -> Void {
         set(key: fontFamilyKey, to: family)
     }
     
-    func getFontFamily() -> String {
+    static func getFontFamily() -> String {
         return get(valueFor: fontFamilyKey) as! String
     }
     
-    func setFont(size: Int) -> Void {
+    static func setFont(size: Int) -> Void {
         set(key: fontSizeKey, to: size)
     }
     
-    func getFontSize() -> Int {
+    static func getFontSize() -> Int {
         return get(valueFor: fontSizeKey) as! Int
     }
     
-    func setKeycap(color: UIColor) -> Void {
-        set(key: keycapColorKey, to: color)
+    static func setKeycap(colorString: String) -> Void {
+        set(key: keycapColorKey, to: colorString)
     }
     
-    func getKeycapColor() -> UIColor {
-        return get(valueFor: keycapColorKey) as! UIColor
+    static func getKeycapColor() -> String {
+        return get(valueFor: keycapColorKey) as! String
     }
     
-    func setLegend(color: UIColor) -> Void {
-        set(key: legendColorKey, to: color)
+    static func setLegend(colorString: String) -> Void {
+        set(key: legendColorKey, to: colorString)
     }
     
-    func getLegendColor() -> UIColor {
-        return get(valueFor: legendColorKey) as! UIColor
+    static func getLegendColor() -> String {
+        return get(valueFor: legendColorKey) as! String
     }
     
-    func setModifier(color: UIColor) -> Void {
-        set(key: modifiersColorKey, to: color)
+    static func setModifier(colorString: String) -> Void {
+        set(key: modifiersColorKey, to: colorString)
     }
     
-    func getModifierColor() -> UIColor {
-       return get(valueFor: modifiersColorKey) as! UIColor
+    static func getModifierColor() -> String {
+       return get(valueFor: modifiersColorKey) as! String
     }
     
-    func setSpacebar(color: UIColor) -> Void {
-        set(key: spaceBarColorKey, to: color)
+    static func setSpacebar(colorString: String) -> Void {
+        set(key: spaceBarColorKey, to: colorString)
     }
     
-    func getSpaceBarColor() -> UIColor {
-        return get(valueFor: spaceBarColorKey) as! UIColor
+    static func getSpaceBarColor() -> String {
+        return get(valueFor: spaceBarColorKey) as! String
     }
     
     
-    func toggleShowSpaceBarText(to: Bool) -> Void {
+    static func toggleShowSpaceBarText(to: Bool) -> Void {
         set(key: spaceBarTextKey, to: true)
     }
     
-    func getShowSpaceBarText() -> Bool {
+    static func getShowSpaceBarText() -> Bool {
         return get(valueFor: spaceBarTextKey) as! Bool
     }
     
     ////
     //  Swift currently does not have priavve functions treat these as if they are private
     ////
-    func set(key: String, to value: Any) -> Void {
+    static func set(key: String, to value: Any) -> Void {
         UserDefaults.standard.set(value, forKey: key)
     }
     
-    func get(valueFor key: String) -> Any {
+    static func get(valueFor key: String) -> Any {
         return UserDefaults.standard.object(forKey: key) ?? (Any).self
     }
 }

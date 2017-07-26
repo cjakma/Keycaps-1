@@ -180,45 +180,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7le-98-iaX">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="29" width="376" height="44"/>
                                 <items>
                                     <navigationItem title="Color Picker" id="AZm-X2-h4T">
-                                        <barButtonItem key="leftBarButtonItem" title="cancel" id="wye-D5-5DE">
+                                        <barButtonItem key="leftBarButtonItem" title="back" id="wye-D5-5DE">
                                             <connections>
                                                 <action selector="dismiss:" destination="4w2-o7-N3S" id="EYU-IF-h2o"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="save" id="P15-yp-Ycn">
+                                            <connections>
+                                                <action selector="save:" destination="4w2-o7-N3S" id="7LE-qb-QhE"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="I1K-5W-dLr">
-                                <rect key="frame" x="27" y="146" width="320" height="374"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="I1K-5W-dLr">
+                                <rect key="frame" x="0.0" y="73" width="375" height="594"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDT-c5-bab">
-                                        <rect key="frame" x="40" y="0.0" width="240" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                                         <color key="backgroundColor" red="0.40000000000000002" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYI-r7-f5p">
-                                        <rect key="frame" x="0.0" y="128" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="128" width="375" height="466"/>
                                     </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Vq-iC-GuB">
-                                        <rect key="frame" x="135.5" y="344" width="49" height="30"/>
-                                        <state key="normal" title="Submit"/>
-                                    </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="NDT-c5-bab" firstAttribute="leading" secondItem="I1K-5W-dLr" secondAttribute="leading" constant="40" id="dHR-jM-6RN"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="I1K-5W-dLr" firstAttribute="centerY" secondItem="Ftj-Xh-rc7" secondAttribute="centerY" id="O6M-Vf-Qmg"/>
-                            <constraint firstItem="I1K-5W-dLr" firstAttribute="centerX" secondItem="Ftj-Xh-rc7" secondAttribute="centerX" id="UfP-pF-3Fj"/>
+                            <constraint firstItem="I1K-5W-dLr" firstAttribute="leading" secondItem="7le-98-iaX" secondAttribute="leading" id="00d-xo-0Fm"/>
+                            <constraint firstAttribute="trailing" secondItem="I1K-5W-dLr" secondAttribute="trailing" id="Bwb-pX-jva"/>
                             <constraint firstItem="7le-98-iaX" firstAttribute="leading" secondItem="Ftj-Xh-rc7" secondAttribute="leading" id="iPt-zA-BH0"/>
-                            <constraint firstItem="I1K-5W-dLr" firstAttribute="centerX" secondItem="7le-98-iaX" secondAttribute="centerX" id="lBc-i8-ZoO"/>
-                            <constraint firstItem="RfD-NB-LTY" firstAttribute="top" secondItem="I1K-5W-dLr" secondAttribute="bottom" constant="147" id="tT6-cQ-Rki"/>
-                            <constraint firstItem="I1K-5W-dLr" firstAttribute="top" secondItem="7le-98-iaX" secondAttribute="bottom" constant="74" id="uGT-b5-Uor"/>
+                            <constraint firstItem="7le-98-iaX" firstAttribute="top" secondItem="bUk-i3-m4Y" secondAttribute="bottom" constant="9" id="lPc-9x-xhG"/>
+                            <constraint firstItem="I1K-5W-dLr" firstAttribute="centerX" secondItem="7le-98-iaX" secondAttribute="centerX" id="npz-1h-nYl"/>
+                            <constraint firstItem="I1K-5W-dLr" firstAttribute="top" secondItem="7le-98-iaX" secondAttribute="bottom" id="qoX-i4-u7i"/>
+                            <constraint firstItem="RfD-NB-LTY" firstAttribute="top" secondItem="I1K-5W-dLr" secondAttribute="bottom" id="upo-YL-lX8"/>
                         </constraints>
                     </view>
                     <connections>

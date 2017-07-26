@@ -11,19 +11,9 @@ import UIKit
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
     
     @IBOutlet weak var picker: UIPickerView!
-    let pickerData: [String] = ["Red", "Orange", "Yellow", "Green",
-                                "Cyan", "Blue", "Indigo", "Violet",
-                                "Purple", "Magenta", "Pink", "Brown",
-                                "White", "Gray" ,"Black"]
     
-    let colorDictionary = ["Red": UIColor.red, "Orange": UIColor.orange, "Yellow": UIColor.yellow,
-                           "Green": UIColor.green, "Cyan": UIColor.cyan, "Blue": UIColor.blue,
-                           "Indigo": UIColor(red: 75/255, green: 0/255, blue: 130/255, alpha: 1.0),
-                           "Violet": UIColor(red: 238/255, green: 130/255, blue: 238/255, alpha: 1.0),
-                           "Purple": UIColor.purple, "Magenta": UIColor.magenta,
-                           "Pink": UIColor(red: 255/255, green: 192/255, blue: 203/255, alpha: 1.0),
-                           "Brown": UIColor.brown, "White": UIColor.white, "Gray": UIColor.gray ,
-                           "Black": UIColor.black]
+    let pickerData:      [String]          = KeycapColors.getArray()
+    let colorDictionary: [String: UIColor] = KeycapColors.getDictionary()
 
     @IBOutlet weak var colorBlock: UIView!
     
@@ -62,6 +52,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         colorBlock.backgroundColor = color
     }
 
+    @IBAction func save(_ sender: Any) {
+        let selectedColorIndex  = picker.selectedRow(inComponent: 0)
+        let selectedColorString = pickerData[selectedColorIndex]
+        
+        KeycapSettings.setBackground(colorString: selectedColorString)
+        let colorString = KeycapSettings.getBackgroundColor()
+        print(colorString)
+//        dismiss(animated: true, completion: {})
+    }
 
     @IBAction func dismiss(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: {})

@@ -42,6 +42,8 @@ class KeyboardViewController: UIInputViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated
+        
+        print("memory warning!")
     }
     
     override func textWillChange(_ textInput: UITextInput?) {
@@ -69,6 +71,12 @@ class KeyboardViewController: UIInputViewController {
     
     func styleKeycap(for button: UIButton) -> Void {
         button.setTitleColor(.white, for: .normal)
+        print("before")
+//        let colorString = KeycapSettings.getBackgroundColor()
+        print("after")
+//        let colorDictionary = KeycapColors.getDictionary()
+//        let color = colorDictionary[colorString]
+        
         button.backgroundColor = UIColor.darkGray
     }
     
