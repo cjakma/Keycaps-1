@@ -26,6 +26,7 @@ struct KeycapSettings {
     let keycapColorKey:     String = "keycapColor"
     let legendColorKey:     String = "legendColor"
     let modifiersColorKey:  String = "modifiersColor"
+    let spaceBarColorKey:   String = "spaceBarColor"
     let spaceBarTextKey:    String = "spaceBarText"
     
     func setBackground(color: UIColor) -> Void {
@@ -100,11 +101,20 @@ struct KeycapSettings {
        return get(valueFor: modifiersColorKey) as! UIColor
     }
     
-    func toggleShowSpacebarText(to: Bool) -> Void {
+    func setSpacebar(color: UIColor) -> Void {
+        set(key: spaceBarColorKey, to: color)
+    }
+    
+    func getSpaceBarColor() -> UIColor {
+        return get(valueFor: spaceBarColorKey) as! UIColor
+    }
+    
+    
+    func toggleShowSpaceBarText(to: Bool) -> Void {
         set(key: spaceBarTextKey, to: true)
     }
     
-    func getShowSpacebarText() -> Bool {
+    func getShowSpaceBarText() -> Bool {
         return get(valueFor: spaceBarTextKey) as! Bool
     }
     
