@@ -52,6 +52,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         colorBlock.backgroundColor = color
     }
 
+
     @IBAction func save(_ sender: Any) {
         let selectedColorIndex  = picker.selectedRow(inComponent: 0)
         let selectedColorString = pickerData[selectedColorIndex]
@@ -59,11 +60,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         KeycapSettings.setBackground(colorString: selectedColorString)
         let colorString = KeycapSettings.getBackgroundColor()
         print(colorString)
-//        dismiss(animated: true, completion: {})
     }
-
-    @IBAction func dismiss(_ sender: UIBarButtonItem) {
+    
+    @IBAction func dismiss(_ sender: Any) {
         dismiss(animated: true, completion: {})
     }
+
 }
 

@@ -500,24 +500,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="53s-Qk-JaL">
-                                <rect key="frame" x="0.0" y="530" width="414" height="206"/>
+                                <rect key="frame" x="0.0" y="580" width="414" height="156"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5CH-Ie-vny">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
                                         <color key="backgroundColor" red="0.40000000000000002" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="78" id="8tl-2n-JLp"/>
+                                        </constraints>
                                     </view>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PN9-IO-ywC">
-                                        <rect key="frame" x="0.0" y="128" width="414" height="78"/>
+                                        <rect key="frame" x="0.0" y="78" width="414" height="78"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="78" id="0ZY-by-Mv2"/>
+                                        </constraints>
                                     </pickerView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="206" id="nAb-dQ-pVc"/>
+                                    <constraint firstAttribute="height" constant="156" id="6Sv-Q3-0Ax"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="156" id="Yir-78-rXN"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WFU-dL-YqC">
+                                <rect key="frame" x="0.0" y="530" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dM-lG-TCN">
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
+                                        <state key="normal" title="back"/>
+                                        <connections>
+                                            <action selector="dismiss:" destination="65P-rB-4ia" eventType="touchUpInside" id="ULA-a5-1Ec"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UK-7l-aet">
+                                        <rect key="frame" x="207" y="0.0" width="207" height="50"/>
+                                        <state key="normal" title="save"/>
+                                        <connections>
+                                            <action selector="save:" destination="65P-rB-4ia" eventType="touchUpInside" id="N4s-eO-90k"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jqV-ro-WyL"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="WFU-dL-YqC" firstAttribute="leading" secondItem="mLQ-9j-G0f" secondAttribute="leading" id="Fx5-bm-xyk"/>
                             <constraint firstAttribute="trailing" secondItem="53s-Qk-JaL" secondAttribute="trailing" id="PpG-sX-THt"/>
+                            <constraint firstAttribute="trailing" secondItem="WFU-dL-YqC" secondAttribute="trailing" id="fdp-O5-vpf"/>
+                            <constraint firstItem="53s-Qk-JaL" firstAttribute="top" secondItem="WFU-dL-YqC" secondAttribute="bottom" id="gvZ-CA-AkY"/>
                             <constraint firstItem="Z6H-BK-nmZ" firstAttribute="top" secondItem="53s-Qk-JaL" secondAttribute="bottom" id="pyt-36-mhl"/>
                         </constraints>
                     </view>
