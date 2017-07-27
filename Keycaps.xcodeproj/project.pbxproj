@@ -10,7 +10,6 @@
 		6810C1261F29032600D9AA21 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6810C1251F29032600D9AA21 /* TableViewController.swift */; };
 		6810C12B1F293C2D00D9AA21 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7C2861F27B620002CC5AA /* KeyboardViewController.swift */; };
 		68B7C26F1F27B5FF002CC5AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7C26E1F27B5FF002CC5AA /* AppDelegate.swift */; };
-		68B7C2711F27B5FF002CC5AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7C2701F27B5FF002CC5AA /* ViewController.swift */; };
 		68B7C2741F27B5FF002CC5AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68B7C2721F27B5FF002CC5AA /* Main.storyboard */; };
 		68B7C2761F27B5FF002CC5AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B7C2751F27B5FF002CC5AA /* Assets.xcassets */; };
 		68B7C2791F27B5FF002CC5AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68B7C2771F27B5FF002CC5AA /* LaunchScreen.storyboard */; };
@@ -19,6 +18,7 @@
 		68D8FA111F2A3C5E00956CAD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8FA101F2A3C5E00956CAD /* SettingsViewController.swift */; };
 		68D8FA141F2A3F2700956CAD /* KeycapColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8FA121F2A3F2700956CAD /* KeycapColors.swift */; };
 		68D8FA151F2A3F2700956CAD /* KeycapSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8FA131F2A3F2700956CAD /* KeycapSettings.swift */; };
+		68D8FA171F2A3FE500956CAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8FA161F2A3FE500956CAD /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +49,6 @@
 		6810C1251F29032600D9AA21 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		68B7C26B1F27B5FF002CC5AA /* Keycaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keycaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B7C26E1F27B5FF002CC5AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		68B7C2701F27B5FF002CC5AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../Keycaps/ViewController.swift; sourceTree = "<group>"; };
 		68B7C2731F27B5FF002CC5AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		68B7C2751F27B5FF002CC5AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68B7C2781F27B5FF002CC5AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		68D8FA101F2A3C5E00956CAD /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		68D8FA121F2A3F2700956CAD /* KeycapColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeycapColors.swift; sourceTree = "<group>"; };
 		68D8FA131F2A3F2700956CAD /* KeycapSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeycapSettings.swift; sourceTree = "<group>"; };
+		68D8FA161F2A3FE500956CAD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,9 +119,9 @@
 				68D8FA121F2A3F2700956CAD /* KeycapColors.swift */,
 				68D8FA131F2A3F2700956CAD /* KeycapSettings.swift */,
 				68D8FA101F2A3C5E00956CAD /* SettingsViewController.swift */,
-				68B7C2701F27B5FF002CC5AA /* ViewController.swift */,
 				68B7C2881F27B620002CC5AA /* Info.plist */,
 				68B7C2901F27B644002CC5AA /* KeycapsStoryboard.storyboard */,
+				68D8FA161F2A3FE500956CAD /* ViewController.swift */,
 			);
 			path = "Keycaps-Keyboard";
 			sourceTree = "<group>";
@@ -232,7 +232,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68B7C2711F27B5FF002CC5AA /* ViewController.swift in Sources */,
 				68B7C26F1F27B5FF002CC5AA /* AppDelegate.swift in Sources */,
 				6810C1261F29032600D9AA21 /* TableViewController.swift in Sources */,
 			);
@@ -242,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68D8FA171F2A3FE500956CAD /* ViewController.swift in Sources */,
 				6810C12B1F293C2D00D9AA21 /* KeyboardViewController.swift in Sources */,
 				68D8FA151F2A3F2700956CAD /* KeycapSettings.swift in Sources */,
 				68D8FA141F2A3F2700956CAD /* KeycapColors.swift in Sources */,
