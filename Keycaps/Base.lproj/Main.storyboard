@@ -20,7 +20,19 @@
                     <view key="view" contentMode="scaleToFill" id="a2t-83-T1D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOx-la-Ood">
+                                <rect key="frame" x="159" y="323" width="57" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HOx-la-Ood" firstAttribute="centerY" secondItem="a2t-83-T1D" secondAttribute="centerY" id="OWo-B0-XN2"/>
+                            <constraint firstItem="HOx-la-Ood" firstAttribute="centerX" secondItem="a2t-83-T1D" secondAttribute="centerX" id="vK6-Tj-Zsm"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iec-Hx-kes" userLabel="First Responder" sceneMemberID="firstResponder"/>
