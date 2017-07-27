@@ -71,13 +71,16 @@ class KeyboardViewController: UIInputViewController {
     
     func styleKeycap(for button: UIButton) -> Void {
         button.setTitleColor(.white, for: .normal)
-        print("before")
-//        let colorString = KeycapSettings.getBackgroundColor()
-        print("after")
-//        let colorDictionary = KeycapColors.getDictionary()
-//        let color = colorDictionary[colorString]
+
+        if let color = KeycapSettings.getBackgroundColor() {
+            let colorString = color as! String
+            let colorDictionary = KeycapColors.getDictionary()
+            
+            button.backgroundColor = colorDictionary[colorString]
+        } else {
+            button.backgroundColor = UIColor.darkGray
+        }
         
-        button.backgroundColor = UIColor.darkGray
     }
     
     func styleLegendFont(for button: UIButton) -> Void {

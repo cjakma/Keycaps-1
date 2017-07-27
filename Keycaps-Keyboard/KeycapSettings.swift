@@ -35,8 +35,8 @@ struct KeycapSettings {
         }
     }
     
-    static func getBackgroundColor() -> String {
-        return get(valueFor: backgroundColorKey) as! String
+    static func getBackgroundColor() -> Any? {
+        return get(valueFor: backgroundColorKey)
     }
     
     static func setBorder(colorString: String) -> Void {
