@@ -49,10 +49,10 @@
 /* Begin PBXFileReference section */
 		6810C11F1F28004B00D9AA21 /* KeycapSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeycapSettings.swift; path = ../KeycapSettings.swift; sourceTree = "<group>"; };
 		6810C1251F29032600D9AA21 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		6810C12E1F293D4300D9AA21 /* KeycapColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeycapColors.swift; sourceTree = "<group>"; };
+		6810C12E1F293D4300D9AA21 /* KeycapColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeycapColors.swift; path = ../Keycaps/KeycapColors.swift; sourceTree = "<group>"; };
 		68B7C26B1F27B5FF002CC5AA /* Keycaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keycaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B7C26E1F27B5FF002CC5AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		68B7C2701F27B5FF002CC5AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		68B7C2701F27B5FF002CC5AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../Keycaps/ViewController.swift; sourceTree = "<group>"; };
 		68B7C2731F27B5FF002CC5AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		68B7C2751F27B5FF002CC5AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68B7C2781F27B5FF002CC5AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -103,10 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				68B7C26E1F27B5FF002CC5AA /* AppDelegate.swift */,
-				6810C12E1F293D4300D9AA21 /* KeycapColors.swift */,
-				6810C11F1F28004B00D9AA21 /* KeycapSettings.swift */,
 				6810C1251F29032600D9AA21 /* TableViewController.swift */,
-				68B7C2701F27B5FF002CC5AA /* ViewController.swift */,
 				68B7C2721F27B5FF002CC5AA /* Main.storyboard */,
 				68B7C2751F27B5FF002CC5AA /* Assets.xcassets */,
 				68B7C2771F27B5FF002CC5AA /* LaunchScreen.storyboard */,
@@ -118,7 +115,10 @@
 		68B7C2851F27B620002CC5AA /* Keycaps-Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				6810C12E1F293D4300D9AA21 /* KeycapColors.swift */,
+				6810C11F1F28004B00D9AA21 /* KeycapSettings.swift */,
 				68B7C2861F27B620002CC5AA /* KeyboardViewController.swift */,
+				68B7C2701F27B5FF002CC5AA /* ViewController.swift */,
 				68B7C2881F27B620002CC5AA /* Info.plist */,
 				68B7C2901F27B644002CC5AA /* KeycapsStoryboard.storyboard */,
 			);
