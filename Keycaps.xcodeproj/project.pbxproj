@@ -117,16 +117,32 @@
 		68B7C2851F27B620002CC5AA /* Keycaps-Keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				68B7C2861F27B620002CC5AA /* KeyboardViewController.swift */,
-				68D8FA121F2A3F2700956CAD /* KeycapColors.swift */,
-				68D8FA131F2A3F2700956CAD /* KeycapSettings.swift */,
+				68E9A56D1F2A9A3A0021E131 /* Utilities */,
+				68E9A56C1F2A9A090021E131 /* ViewControllers */,
 				68B7C2901F27B644002CC5AA /* KeycapsStoryboard.storyboard */,
-				68D8FA101F2A3C5E00956CAD /* SettingsViewController.swift */,
-				68D8FA1A1F2A578600956CAD /* StringExtension.swift */,
-				68D8FA161F2A3FE500956CAD /* ViewController.swift */,
 				68B7C2881F27B620002CC5AA /* Info.plist */,
 			);
 			path = "Keycaps-Keyboard";
+			sourceTree = "<group>";
+		};
+		68E9A56C1F2A9A090021E131 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				68B7C2861F27B620002CC5AA /* KeyboardViewController.swift */,
+				68D8FA101F2A3C5E00956CAD /* SettingsViewController.swift */,
+				68D8FA161F2A3FE500956CAD /* ViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		68E9A56D1F2A9A3A0021E131 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				68D8FA121F2A3F2700956CAD /* KeycapColors.swift */,
+				68D8FA131F2A3F2700956CAD /* KeycapSettings.swift */,
+				68D8FA1A1F2A578600956CAD /* StringExtension.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
