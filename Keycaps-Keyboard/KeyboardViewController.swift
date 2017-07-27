@@ -13,6 +13,7 @@ class KeyboardViewController: UIInputViewController {
     @IBOutlet weak var nextKeyboardButton: UIButton!
     @IBOutlet var buttonCollection: [UIButton]!
     @IBOutlet var modifierCollection: [UIButton]!
+    @IBOutlet var boardBackground: UIView!
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -36,6 +37,8 @@ class KeyboardViewController: UIInputViewController {
         
         let allButtons: [UIButton] = buttonCollection + modifierCollection
         for button in allButtons { styleBorder(for: button) }
+        
+        styleBackground()
         
     }
     
@@ -70,10 +73,16 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func styleKeycap(for button: UIButton) -> Void {
-        button.setTitleColor(.white, for: .normal)
+        
+        if let colorString = KeycapSettings.getLegendColor() as? String {
+            let colorDictionary = KeycapColors.getDictionary()
+            
+            button.setTitleColor(colorDictionary[colorString], for: .normal)
+        } else {
+            button.setTitleColor(UIColor.white, for: .normal)
+        }
 
-        if let color = KeycapSettings.getBackgroundColor() {
-            let colorString = color as! String
+        if let colorString = KeycapSettings.getKeycapColor() as? String {
             let colorDictionary = KeycapColors.getDictionary()
             
             button.backgroundColor = colorDictionary[colorString]
@@ -86,5 +95,17 @@ class KeyboardViewController: UIInputViewController {
     func styleLegendFont(for button: UIButton) -> Void {
         button.titleLabel!.font = UIFont(name: "Marker Felt", size: 20)
     }
+    
+    func styleBackground() -> Void {
+        if let colorString = KeycapSettings.getBackgroundColor() as? String {
+            let colorDictionary = KeycapColors.getDictionary()
+            
+            boardBackground.backgroundColor = colorDictionary[colorString]
+        } else {
+            boardBackground.backgroundColor = UIColor.lightGray
+        }
+    }
 
+
+    
 }

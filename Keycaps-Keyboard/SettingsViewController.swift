@@ -26,6 +26,15 @@ class SettingsViewController: UIViewController {
         dismiss(animated: true, completion: {})
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextScene = segue.destination as? ViewController {
+            let segueID = segue.identifier
+            let baseEncodedSegueID = segueID?.toBase64()
+            
+            nextScene.data = Data.init(base64Encoded: baseEncodedSegueID!)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -99,6 +99,7 @@
                                                 </state>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="zwz-BG-F0t" firstAttribute="width" secondItem="nhb-4s-qYp" secondAttribute="width" id="3ej-pJ-YwO"/>
                                             <constraint firstItem="zwz-BG-F0t" firstAttribute="width" secondItem="eez-9o-VdD" secondAttribute="width" id="5nz-Ke-HdA"/>
@@ -179,6 +180,7 @@
                                                 </state>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Amc-ZA-1ku" firstAttribute="width" secondItem="UbK-rb-w2z" secondAttribute="width" id="5k9-Zq-RbL"/>
                                             <constraint firstItem="Amc-ZA-1ku" firstAttribute="width" secondItem="YmS-kp-VhC" secondAttribute="width" id="DGQ-hw-IlG"/>
@@ -260,6 +262,7 @@
                                                 </state>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Lcp-j7-fOQ" firstAttribute="width" secondItem="HAS-9V-sFn" secondAttribute="width" id="220-XZ-7HM"/>
                                             <constraint firstItem="vcQ-jY-85A" firstAttribute="width" secondItem="8cW-ip-B06" secondAttribute="width" id="Eiu-Df-8Yj"/>
@@ -291,7 +294,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="mfe-G9-rr0" kind="presentation" id="pDG-ja-hIZ"/>
+                                                    <segue destination="mfe-G9-rr0" kind="presentation" identifier="settings" id="pDG-ja-hIZ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPM-Ax-HVH">
@@ -322,6 +325,7 @@
                                                 </state>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="FVn-nP-mMO"/>
                                             <constraint firstItem="SBt-pA-lLj" firstAttribute="width" secondItem="VPM-Ax-HVH" secondAttribute="width" id="z71-cI-yAp"/>
@@ -346,6 +350,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="boardBackground" destination="yj1-ir-2fZ" id="zw2-ri-igC"/>
                         <outlet property="nextKeyboardButton" destination="VPM-Ax-HVH" id="6Yc-mB-AAr"/>
                         <outletCollection property="buttonCollection" destination="zwz-BG-F0t" collectionClass="NSMutableArray" id="5Gl-TP-XYh"/>
                         <outletCollection property="buttonCollection" destination="Cna-DH-hQO" collectionClass="NSMutableArray" id="LnE-Rs-D66"/>
@@ -409,12 +414,15 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="78"/>
                                                 <state key="normal" title="Background"/>
                                                 <connections>
-                                                    <segue destination="65P-rB-4ia" kind="showDetail" id="2eX-HY-7tN"/>
+                                                    <segue destination="65P-rB-4ia" kind="show" identifier="backgroundColor" action="showDetailViewController:sender:" id="2eX-HY-7tN"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0JH-GA-KCu">
                                                 <rect key="frame" x="138" y="0.0" width="138" height="78"/>
                                                 <state key="normal" title="Buttons"/>
+                                                <connections>
+                                                    <segue destination="65P-rB-4ia" kind="show" identifier="buttonColor" action="showDetailViewController:sender:" id="bAE-ae-eMA"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vha-cK-F7h">
                                                 <rect key="frame" x="276" y="0.0" width="138" height="78"/>
@@ -431,6 +439,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ob-mC-yc4">
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="78"/>
                                                 <state key="normal" title="Letters"/>
+                                                <connections>
+                                                    <segue destination="65P-rB-4ia" kind="show" identifier="letterColor" id="PUg-Wj-lgX"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zB9-j3-Jv2">
                                                 <rect key="frame" x="138" y="0.0" width="138" height="78"/>
@@ -485,7 +496,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3UA-GE-STt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-564" y="-20"/>
+            <point key="canvasLocation" x="-529" y="-20"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="XtZ-sC-NEj">
@@ -555,6 +566,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="2dM-lG-TCN" id="TjX-N4-6Lf"/>
                         <outlet property="colorBlock" destination="5CH-Ie-vny" id="Lhd-u7-Erj"/>
                         <outlet property="picker" destination="PN9-IO-ywC" id="zF9-DH-UwZ"/>
                     </connections>
@@ -564,4 +576,7 @@
             <point key="canvasLocation" x="196" y="-20"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="PUg-Wj-lgX"/>
+    </inferredMetricsTieBreakers>
 </document>

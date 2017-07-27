@@ -12,9 +12,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBOutlet weak var picker: UIPickerView!
     
-    let pickerData:      [String]          = KeycapColors.getArray()
+    var pickerData:      [String]          = KeycapColors.getArray()
     let colorDictionary: [String: UIColor] = KeycapColors.getDictionary()
-
+    
+    var data: Data?
+    
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var colorBlock: UIView!
     
     override func viewDidLoad() {
@@ -23,7 +26,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         picker.delegate = self
         picker.dataSource = self
-
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,15 +54,29 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func updateColorBlock(to color: UIColor) -> Void {
         colorBlock.backgroundColor = color
     }
+    
+    func getSegueID(from data: Data) -> String {
+        return data.base64EncodedString().fromBase64()!
+    }
 
 
     @IBAction func save(_ sender: Any) {
         let selectedColorIndex  = picker.selectedRow(inComponent: 0)
         let selectedColorString = pickerData[selectedColorIndex]
         
-        KeycapSettings.setBackground(colorString: selectedColorString)
-        let colorString = KeycapSettings.getBackgroundColor()
-        print(colorString)
+        let segueID = getSegueID(from: data!)
+        
+        switch segueID {
+        case "backgroundColor":
+            KeycapSettings.setBackground(colorString: selectedColorString)
+        case "buttonColor":
+            KeycapSettings.setKeycap(colorString: selectedColorString)
+        case "letterColor":
+            KeycapSettings.setLegend(colorString: selectedColorString)
+        default:
+          print(segueID)
+        }
+        
     }
     
     @IBAction func dismiss(_ sender: Any) {

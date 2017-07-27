@@ -80,19 +80,23 @@ struct KeycapSettings {
     }
     
     static func setKeycap(colorString: String) -> Void {
-        set(key: keycapColorKey, to: colorString)
+        if let nsColorString: NSString = colorString as NSString! {
+            set(key: keycapColorKey, to: nsColorString)
+        }
     }
     
-    static func getKeycapColor() -> String {
-        return get(valueFor: keycapColorKey) as! String
+    static func getKeycapColor() -> Any? {
+        return get(valueFor: keycapColorKey)
     }
     
     static func setLegend(colorString: String) -> Void {
-        set(key: legendColorKey, to: colorString)
+        if let nsColorString: NSString = colorString as NSString! {
+            set(key: legendColorKey, to: nsColorString)
+        }
     }
     
-    static func getLegendColor() -> String {
-        return get(valueFor: legendColorKey) as! String
+    static func getLegendColor() -> Any? {
+        return get(valueFor: legendColorKey)
     }
     
     static func setModifier(colorString: String) -> Void {
