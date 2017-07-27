@@ -40,18 +40,20 @@ struct KeycapSettings {
     }
     
     static func setBorder(colorString: String) -> Void {
-        set(key: borderColorKey, to: colorString)
+        if let nsColorString: NSString = colorString as NSString! {
+            set(key: borderColorKey, to: nsColorString)
+        }
     }
     
-    static func getBorderColor() -> String {
-        return get(valueFor: borderColorKey) as! String
+    static func getBorderColor() -> Any? {
+        return get(valueFor: borderColorKey)
     }
     
     static func setBorder(size: Int) -> Void {
         set(key: borderSizeKey, to: size)
     }
     
-    static func getBorderColor() -> Int {
+    static func getBorderSize() -> Int {
         return get(valueFor: borderSizeKey) as! Int
     }
     
@@ -100,19 +102,23 @@ struct KeycapSettings {
     }
     
     static func setModifier(colorString: String) -> Void {
-        set(key: modifiersColorKey, to: colorString)
+        if let nsColorString: NSString = colorString as NSString! {
+            set(key: modifiersColorKey, to: nsColorString)
+        }
     }
     
-    static func getModifierColor() -> String {
-       return get(valueFor: modifiersColorKey) as! String
+    static func getModifierColor() -> Any? {
+       return get(valueFor: modifiersColorKey)
     }
     
     static func setSpacebar(colorString: String) -> Void {
-        set(key: spaceBarColorKey, to: colorString)
+        if let nsColorString: NSString = colorString as NSString! {
+            set(key: spaceBarColorKey, to: nsColorString)
+        }
     }
     
-    static func getSpaceBarColor() -> String {
-        return get(valueFor: spaceBarColorKey) as! String
+    static func getSpaceBarColor() -> Any? {
+        return get(valueFor: spaceBarColorKey)
     }
     
     

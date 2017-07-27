@@ -71,8 +71,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             KeycapSettings.setBackground(colorString: selectedColorString)
         case "buttonColor":
             KeycapSettings.setKeycap(colorString: selectedColorString)
+        case "borderColor":
+            KeycapSettings.setBorder(colorString: selectedColorString)
         case "letterColor":
             KeycapSettings.setLegend(colorString: selectedColorString)
+        case "modiferColor":
+            KeycapSettings.setModifier(colorString: selectedColorString)
+        case "spacebarColor":
+            KeycapSettings.setSpacebar(colorString: selectedColorString)
         default:
           print(segueID)
         }

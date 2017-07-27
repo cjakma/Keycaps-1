@@ -14,6 +14,9 @@ class KeyboardViewController: UIInputViewController {
     @IBOutlet var buttonCollection: [UIButton]!
     @IBOutlet var modifierCollection: [UIButton]!
     @IBOutlet var boardBackground: UIView!
+    @IBOutlet weak var spacebarButton: UIButton!
+    
+    let colorDictionary = KeycapColors.getDictionary()
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -35,10 +38,13 @@ class KeyboardViewController: UIInputViewController {
             styleLegendFont(for: button)
         }
         
+        for button in modifierCollection { styleModifiers(for: button) }
+        
         let allButtons: [UIButton] = buttonCollection + modifierCollection
-        for button in allButtons { styleBorder(for: button) }
+        for button in allButtons { styleBorders(for: button) }
         
         styleBackground()
+        styleSpacebar()
         
     }
     
@@ -66,25 +72,28 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.setTitleColor(textColor, for: [])
     }
     
-    func styleBorder(for button: UIButton) -> Void {
+    func styleBorders(for button: UIButton) -> Void {
         button.layer.cornerRadius = 10
-        button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 2
+        
+        if let colorString = KeycapSettings.getBorderColor() as? String {
+            button.layer.borderColor = colorDictionary[colorString]!.cgColor
+        } else {
+            button.layer.borderColor = UIColor.lightGray.cgColor
+        }
+        
+
     }
     
     func styleKeycap(for button: UIButton) -> Void {
         
         if let colorString = KeycapSettings.getLegendColor() as? String {
-            let colorDictionary = KeycapColors.getDictionary()
-            
             button.setTitleColor(colorDictionary[colorString], for: .normal)
         } else {
             button.setTitleColor(UIColor.white, for: .normal)
         }
 
         if let colorString = KeycapSettings.getKeycapColor() as? String {
-            let colorDictionary = KeycapColors.getDictionary()
-            
             button.backgroundColor = colorDictionary[colorString]
         } else {
             button.backgroundColor = UIColor.darkGray
@@ -92,14 +101,45 @@ class KeyboardViewController: UIInputViewController {
         
     }
     
+    func styleModifiers(for button: UIButton) -> Void {
+        
+        if let colorString = KeycapSettings.getLegendColor() as? String {
+            button.setTitleColor(colorDictionary[colorString], for: .normal)
+        } else {
+            button.setTitleColor(UIColor.white, for: .normal)
+        }
+        
+        if let colorString = KeycapSettings.getModifierColor() as? String {
+            button.backgroundColor = colorDictionary[colorString]
+        } else {
+            button.backgroundColor = UIColor.darkGray
+        }
+        
+    }
+    
+    func styleSpacebar() -> Void {
+        
+        if let colorString = KeycapSettings.getLegendColor() as? String {
+            spacebarButton.setTitleColor(colorDictionary[colorString], for: .normal)
+        } else {
+            spacebarButton.setTitleColor(UIColor.white, for: .normal)
+        }
+        
+        if let colorString = KeycapSettings.getSpaceBarColor() as? String {
+            spacebarButton.backgroundColor = colorDictionary[colorString]
+        } else {
+            spacebarButton.backgroundColor = UIColor.darkGray
+        }
+        
+    }
+    
+    
     func styleLegendFont(for button: UIButton) -> Void {
         button.titleLabel!.font = UIFont(name: "Marker Felt", size: 20)
     }
     
     func styleBackground() -> Void {
         if let colorString = KeycapSettings.getBackgroundColor() as? String {
-            let colorDictionary = KeycapColors.getDictionary()
-            
             boardBackground.backgroundColor = colorDictionary[colorString]
         } else {
             boardBackground.backgroundColor = UIColor.lightGray
