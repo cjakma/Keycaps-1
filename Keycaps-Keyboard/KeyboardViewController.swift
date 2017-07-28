@@ -131,16 +131,24 @@ class KeyboardViewController: UIInputViewController {
             spacebarButton.backgroundColor = UIColor.darkGray
         }
         
-        if let spacebarText = KeycapSettings.getShowSpaceBarText() as? Bool {
+        if let spacebarText = KeycapSettings.getShowSpaceBarText() as? Int {
             spacebarButton.setTitle("\(spacebarText)", for: .normal)
-            if !spacebarText { spacebarButton.setTitleColor(.clear, for: .normal)}
+            if spacebarText == 0 {
+                spacebarButton.setTitleColor(.clear, for: .normal)
+            } else {
+                if let colorString = KeycapSettings.getLegendColor() as? String {
+                    spacebarButton.setTitleColor(colorDictionary[colorString], for: .normal)
+                }
+            }
         }
         
     }
     
     
     func styleLegendFont(for button: UIButton) -> Void {
-        button.titleLabel!.font = UIFont(name: "Marker Felt", size: 20)
+        if let textSize = KeycapSettings.getShowLargeText() as? Int {
+            button.titleLabel!.font = UIFont(name: "Helvetica Neue", size: CGFloat(textSize))
+        }
     }
     
     func styleBackground() -> Void {

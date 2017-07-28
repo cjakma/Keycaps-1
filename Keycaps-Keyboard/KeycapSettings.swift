@@ -49,36 +49,36 @@ struct KeycapSettings {
         return get(valueFor: borderColorKey)
     }
     
-    static func setBorder(size: Int) -> Void {
-        set(key: borderSizeKey, to: size)
+    static func toggleShowBorder(to show: NSNumber) -> Void {
+        set(key: borderSizeKey, to: show)
     }
     
-    static func getBorderSize() -> Int {
-        return get(valueFor: borderSizeKey) as! Int
+    static func getShowBorder() -> Any? {
+        return get(valueFor: borderSizeKey)
     }
     
-    static func setBorder(radius: Int) -> Void {
-        set(key: borderRadiusKey, to: radius)
+    static func toggleShowRoundedCorners(to show: NSNumber) -> Void {
+        set(key: borderRadiusKey, to: show)
     }
     
-    static func getBorderRadius() -> Int {
-        return get(valueFor: borderRadiusKey) as! Int
+    static func getShowRoundedCorners() -> Any {
+        return get(valueFor: borderRadiusKey)
     }
     
-    static func setFont(family: String) -> Void {
-        set(key: fontFamilyKey, to: family)
+//    static func setFont(family: String) -> Void {
+//        set(key: fontFamilyKey, to: family)
+//    }
+//    
+//    static func getFontFamily() -> String {
+//        return get(valueFor: fontFamilyKey) as! String
+//    }
+    
+    static func toggleShowLargeText(to show: NSNumber) -> Void {
+        set(key: fontSizeKey, to: show)
     }
     
-    static func getFontFamily() -> String {
-        return get(valueFor: fontFamilyKey) as! String
-    }
-    
-    static func setFont(size: Int) -> Void {
-        set(key: fontSizeKey, to: size)
-    }
-    
-    static func getFontSize() -> Int {
-        return get(valueFor: fontSizeKey) as! Int
+    static func getShowLargeText() -> Any? {
+        return get(valueFor: fontSizeKey)
     }
     
     static func setKeycap(colorString: String) -> Void {
@@ -121,9 +121,8 @@ struct KeycapSettings {
         return get(valueFor: spaceBarColorKey)
     }
     
-    static func toggleShowSpaceBarText(to show: Bool) -> Void {
-        let nsStringBool = "\(show)" as NSString
-        set(key: spaceBarTextKey, to: nsStringBool)
+    static func toggleShowSpaceBarText(to show: NSNumber) -> Void {
+        set(key: spaceBarTextKey, to: show)
     }
     
     static func getShowSpaceBarText() -> Any? {

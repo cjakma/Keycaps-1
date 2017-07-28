@@ -9,12 +9,12 @@
 import UIKit
 
 class MoreSettingsTableViewController: UITableViewController {
-
-    @IBOutlet weak var largeTextToggle:      UISwitch!
-    @IBOutlet weak var roundedCornersToggle: UISwitch!
-    @IBOutlet weak var spacebarTextToggle:   UISwitch!
-    @IBOutlet weak var largeBordersToggle:   UISwitch!
     
+    let truthy: NSNumber  = 1
+    let falsy:  NSNumber  = 0
+    
+    let normalTextSize: NSNumber = 15
+    let largeTextSize:  NSNumber = 22
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,35 +31,49 @@ class MoreSettingsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 2
-//    }
-
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 10
-//    }
+    
+    @IBAction func toggleLargeText(_ sender: UISwitch) {
+        if sender.isOn {
+            KeycapSettings.toggleShowLargeText(to: largeTextSize)
+        } else {
+            KeycapSettings.toggleShowLargeText(to: normalTextSize)
+        }
+    }
+    
+    @IBAction func toggleRoundedCorners(_ sender: UISwitch) {
+        if sender.isOn {
+            KeycapSettings.toggleShowRoundedCorners(to: truthy)
+        } else {
+            KeycapSettings.toggleShowRoundedCorners(to: falsy)
+        }
+    }
     
     @IBAction func toggleSpacebarText(_ sender: UISwitch) {
         if sender.isOn {
-            KeycapSettings.toggleShowSpaceBarText(to: true)
+            KeycapSettings.toggleShowSpaceBarText(to: truthy)
         } else {
-            KeycapSettings.toggleShowSpaceBarText(to: false)
+            KeycapSettings.toggleShowSpaceBarText(to: falsy)
+        }
+    }
+    
+    @IBAction func toggleBorders(_ sender: UISwitch) {
+        if sender.isOn {
+            KeycapSettings.toggleShowBorder(to: truthy)
+        } else {
+            KeycapSettings.toggleShowBorder(to: falsy)
         }
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let nextScene = segue.destination as? ViewController {
+            let segueID = segue.identifier
+            let baseEncodedSegueID = segueID?.toBase64()
+
+            nextScene.data = Data.init(base64Encoded: baseEncodedSegueID!)
+        }
     }
-    */
+    
+
 
 }
