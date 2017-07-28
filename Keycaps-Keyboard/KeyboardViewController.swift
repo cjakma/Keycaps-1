@@ -16,9 +16,23 @@ class KeyboardViewController: UIInputViewController {
     @IBOutlet var boardBackground: UIView!
     @IBOutlet weak var spacebarButton: UIButton!
     @IBOutlet weak var shiftButton: UIButton!
+    @IBOutlet weak var numAlphaKey: UIButton!
     
     let colorDictionary = KeycapColors.getDictionary()
-    var capsLockOn = false
+    var capsLockOn      = false
+    var defaultKeysOn   = true
+    
+    let defaultKeys = ["0": "q", "1": "w", "2": "e", "3": "r", "4": "t", "5": "y", "6": "u", "7": "i",
+                       "8": "o", "9": "p", "10": "a", "11": "s", "12": "d", "13": "f", "14": "g",
+                       "15": "h", "16": "j", "17": "k", "18": "l", "19": "z", "20": "x", "21": "c",
+                       "22": "v", "23": "b", "24": "n", "25": "m"]
+    
+    let numberKeys = ["0": "1", "1": "2", "2": "3", "3": "4", "4": "5", "5": "6", "6": "7", "7": "8",
+                      "8": "9", "9": "0", "10": "-", "11": "/", "12": ":", "13": ";", "14": "(",
+                       "15": ")", "16": "$", "17": "@", "18": "\"", "19": ".", "20": ",", "21": "?",
+                       "22": "!", "23": "\'", "24": "+", "25": "*"]
+    
+    //    let specialCharacterKeys = ["": ""]
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -93,6 +107,52 @@ class KeyboardViewController: UIInputViewController {
             button.setTitleColor(.green, for: .normal)
         } else {
             button.setTitleColor(.black, for: .normal)
+        }
+    }
+    
+    @IBAction func switchKeys(_ sender: UIButton) {
+        defaultKeysOn = !defaultKeysOn
+        
+        if defaultKeysOn {
+            for (index, button) in buttonCollection.enumerated() {
+               let keyCharacter = numberKeys["\(index)"]
+                button.setTitle(keyCharacter, for: .normal)
+            }
+
+            shiftButton.isEnabled = false
+            shiftButton.backgroundColor = UIColor.clear
+            shiftButton.setTitleColor(UIColor.clear, for: .normal)
+            shiftButton.layer.borderColor = UIColor.clear.cgColor
+            
+            numAlphaKey.setTitle("abc", for: .normal)
+        } else {
+            for (index, button) in buttonCollection.enumerated() {
+                let keyCharacter = defaultKeys["\(index)"]
+                button.setTitle(keyCharacter, for: .normal)
+            }
+            
+            shiftButton.isEnabled = true
+            
+            if let legendColor = KeycapSettings.getLegendColor() as? String {
+                shiftButton.setTitleColor(colorDictionary[legendColor], for: .normal)
+            } else {
+                shiftButton.setTitleColor(UIColor.black, for: .normal)
+            }
+            
+            if let backgroundColor = KeycapSettings.getBackgroundColor() as? String {
+                shiftButton.backgroundColor = colorDictionary[backgroundColor]
+            } else {
+                shiftButton.backgroundColor = UIColor.darkGray
+            }
+            
+            if let borderColor = KeycapSettings.getBorderColor() as? String {
+                shiftButton.layer.borderColor = colorDictionary[borderColor]!.cgColor
+            } else {
+                shiftButton.layer.borderColor = UIColor.lightGray.cgColor
+            }
+            
+            numAlphaKey.setTitle("123", for: .normal)
+            
         }
     }
     
