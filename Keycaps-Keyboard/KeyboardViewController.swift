@@ -15,8 +15,10 @@ class KeyboardViewController: UIInputViewController {
     @IBOutlet var modifierCollection: [UIButton]!
     @IBOutlet var boardBackground: UIView!
     @IBOutlet weak var spacebarButton: UIButton!
+    @IBOutlet weak var shiftButton: UIButton!
     
     let colorDictionary = KeycapColors.getDictionary()
+    var capsLockOn = false
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -46,6 +48,52 @@ class KeyboardViewController: UIInputViewController {
         styleBackground()
         styleSpacebar()
         
+    }
+    
+    @IBAction func keyPressed(button: UIButton) {
+        let string = button.titleLabel!.text
+        (textDocumentProxy as UIKeyInput).insertText("\(string!)")
+    }
+    
+    @IBAction func backSpacePressed(button: UIButton) {
+        (textDocumentProxy as UIKeyInput).deleteBackward()
+    }
+    
+    @IBAction func spacePressed(button: UIButton) {
+        (textDocumentProxy as UIKeyInput).insertText(" ")
+    }
+    
+    @IBAction func returnPressed(button: UIButton) {
+        (textDocumentProxy as UIKeyInput).insertText("\n")
+    }
+    
+    @IBAction func capsLockPressed(button: UIButton) {
+        capsLockOn = !capsLockOn
+        
+        changeCaps(buttons: buttonCollection)
+        updateShift(button: shiftButton)
+        
+    }
+    
+    func changeCaps(buttons:  [UIButton]!) {
+        for button in buttonCollection {
+            let buttonTitle = button.titleLabel!.text
+            if capsLockOn {
+                let text = buttonTitle!.uppercased()
+                button.setTitle("\(text)", for: .normal)
+            } else {
+                let text = buttonTitle!.lowercased()
+                button.setTitle("\(text)", for: .normal)
+            }
+        }
+    }
+    
+    func updateShift(button: UIButton) -> Void {
+        if capsLockOn {
+            button.setTitleColor(.green, for: .normal)
+        } else {
+            button.setTitleColor(.black, for: .normal)
+        }
     }
     
     override func didReceiveMemoryWarning() {
