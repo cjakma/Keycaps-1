@@ -10,6 +10,11 @@ import UIKit
 
 class MoreSettingsTableViewController: UITableViewController {
     
+    @IBOutlet weak var largeTextSwitch:     UISwitch!
+    @IBOutlet weak var roundedCornerSwitch: UISwitch!
+    @IBOutlet weak var spacebarTextSwitch:  UISwitch!
+    @IBOutlet weak var borderSwitch:        UISwitch!
+    
     let truthy: NSNumber  = 1
     let falsy:  NSNumber  = 0
     
@@ -24,11 +29,54 @@ class MoreSettingsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let toggleCollection = [largeTextSwitch, roundedCornerSwitch, spacebarTextSwitch, borderSwitch]
+        
+        for toggle in toggleCollection { update(toggle: toggle!) }
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func update(toggle: UISwitch) -> Void {
+        switch toggle {
+        case largeTextSwitch:
+            if let textSetting = KeycapSettings.getShowLargeText() as? NSNumber {
+                if textSetting == largeTextSize {
+                    toggle.setOn(true, animated: false)
+                } else {
+                    toggle.setOn(false, animated: false)
+                }
+            }
+        case roundedCornerSwitch:
+            if let roundedSetting = KeycapSettings.getShowRoundedCorners() as? NSNumber {
+                if roundedSetting == truthy {
+                    toggle.setOn(true, animated: false)
+                } else {
+                    toggle.setOn(false, animated: false)
+                }
+            }
+        case spacebarTextSwitch:
+            if let spacebarTextSetting = KeycapSettings.getShowSpaceBarText() as? NSNumber {
+                if spacebarTextSetting == truthy {
+                    toggle.setOn(true, animated: false)
+                } else {
+                    toggle.setOn(false, animated: false)
+                }
+            }
+        case borderSwitch:
+            if let borderSetting = KeycapSettings.getShowBorder() as? NSNumber {
+                if borderSetting == truthy {
+                    toggle.setOn(true, animated: false)
+                } else {
+                    toggle.setOn(false, animated: false)
+                }
+            }
+        default:
+            print("Unidentified toggle! Will not update.")
+        }
     }
 
     

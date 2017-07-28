@@ -64,17 +64,17 @@ class KeyboardViewController: UIInputViewController {
         
         var textColor: UIColor
         let proxy = self.textDocumentProxy
+        
         if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
             textColor = UIColor.white
         } else {
             textColor = UIColor.black
         }
+        
         self.nextKeyboardButton.setTitleColor(textColor, for: [])
     }
     
     func styleBorders(for button: UIButton) -> Void {
-        button.layer.cornerRadius = 10
-        button.layer.borderWidth = 2
         
         if let colorString = KeycapSettings.getBorderColor() as? String {
             button.layer.borderColor = colorDictionary[colorString]!.cgColor
@@ -82,7 +82,23 @@ class KeyboardViewController: UIInputViewController {
             button.layer.borderColor = UIColor.lightGray.cgColor
         }
         
-
+        if let showBorders = KeycapSettings.getShowBorder() as? Int {
+            if showBorders == 1 {
+                button.layer.borderWidth = 2
+            } else {
+                button.layer.borderWidth = 0
+            }
+        }
+        
+        if let roundCorners = KeycapSettings.getShowRoundedCorners() as? Int {
+            if roundCorners == 1 {
+                button.layer.cornerRadius = 10
+            } else {
+                button.layer.cornerRadius = 0
+            }
+        }
+        
+        
     }
     
     func styleKeycap(for button: UIButton) -> Void {

@@ -744,6 +744,12 @@
                             <outlet property="delegate" destination="JIG-hY-XeQ" id="Hto-gW-zUI"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="borderSwitch" destination="fzw-uP-cDQ" id="Mc0-Qa-L8r"/>
+                        <outlet property="largeTextSwitch" destination="THe-dO-xKp" id="jJx-Je-m5O"/>
+                        <outlet property="roundedCornerSwitch" destination="3AY-PB-1nb" id="Uvh-gO-h24"/>
+                        <outlet property="spacebarTextSwitch" destination="jDb-i5-Yvp" id="DQM-Tf-RIV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pzJ-4h-7Zi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
