@@ -131,6 +131,11 @@ class KeyboardViewController: UIInputViewController {
             spacebarButton.backgroundColor = UIColor.darkGray
         }
         
+        if let spacebarText = KeycapSettings.getShowSpaceBarText() as? Bool {
+            spacebarButton.setTitle("\(spacebarText)", for: .normal)
+            if !spacebarText { spacebarButton.setTitleColor(.clear, for: .normal)}
+        }
+        
     }
     
     

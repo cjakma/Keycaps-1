@@ -121,13 +121,13 @@ struct KeycapSettings {
         return get(valueFor: spaceBarColorKey)
     }
     
-    
-    static func toggleShowSpaceBarText(to: Bool) -> Void {
-        set(key: spaceBarTextKey, to: true)
+    static func toggleShowSpaceBarText(to show: Bool) -> Void {
+        let nsStringBool = "\(show)" as NSString
+        set(key: spaceBarTextKey, to: nsStringBool)
     }
     
-    static func getShowSpaceBarText() -> Bool {
-        return get(valueFor: spaceBarTextKey) as! Bool
+    static func getShowSpaceBarText() -> Any? {
+        return get(valueFor: spaceBarTextKey)
     }
     
     ////
