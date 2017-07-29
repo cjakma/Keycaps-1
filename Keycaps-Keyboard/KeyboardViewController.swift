@@ -120,11 +120,11 @@ class KeyboardViewController: UIInputViewController {
             }
 
             shiftButton.isEnabled = false
+            numAlphaKey.setTitle("abc", for: .normal)
+
             shiftButton.backgroundColor = UIColor.clear
             shiftButton.setTitleColor(UIColor.clear, for: .normal)
             shiftButton.layer.borderColor = UIColor.clear.cgColor
-            
-            numAlphaKey.setTitle("abc", for: .normal)
         } else {
             for (index, button) in buttonCollection.enumerated() {
                 let keyCharacter = defaultKeys["\(index)"]
@@ -132,27 +132,11 @@ class KeyboardViewController: UIInputViewController {
             }
             
             shiftButton.isEnabled = true
-            
-            if let legendColor = KeycapSettings.getLegendColor() as? String {
-                shiftButton.setTitleColor(colorDictionary[legendColor], for: .normal)
-            } else {
-                shiftButton.setTitleColor(UIColor.black, for: .normal)
-            }
-            
-            if let backgroundColor = KeycapSettings.getBackgroundColor() as? String {
-                shiftButton.backgroundColor = colorDictionary[backgroundColor]
-            } else {
-                shiftButton.backgroundColor = UIColor.darkGray
-            }
-            
-            if let borderColor = KeycapSettings.getBorderColor() as? String {
-                shiftButton.layer.borderColor = colorDictionary[borderColor]!.cgColor
-            } else {
-                shiftButton.layer.borderColor = UIColor.lightGray.cgColor
-            }
-            
             numAlphaKey.setTitle("123", for: .normal)
-            
+
+            styleLegendColor(for: shiftButton)
+            styleKeycap(for: shiftButton)
+            styleBorderColor(for: shiftButton)
         }
     }
     
@@ -183,21 +167,75 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func styleBorders(for button: UIButton) -> Void {
-        
+        styleBorderColor(for: button)
+        styleShowBorders(for: button)
+        styleRoundedCorners(for: button)
+    }
+    
+    func styleKeycap(for button: UIButton) -> Void {
+        styleLegendColor(for: button)
+        styleKeycapColor(for: button)
+    }
+    
+    func styleModifiers(for button: UIButton) -> Void {
+        styleLegendColor(for: button)
+        styleModiferKeycapColor(for: button)
+    }
+    
+    func styleSpacebar() -> Void {
+        styleLegendColor(for: spacebarButton)
+        styleSpacebarKeycapColor()
+        styleSpacebarText()
+    }
+    
+    func styleBackground() {
+        if let colorString = KeycapSettings.getBackgroundColor() as? String {
+            boardBackground.backgroundColor = colorDictionary[colorString]
+        } else {
+            boardBackground.backgroundColor = UIColor.lightGray
+        }
+    }
+    
+    func styleBorderColor(for button: UIButton) {
         if let colorString = KeycapSettings.getBorderColor() as? String {
             button.layer.borderColor = colorDictionary[colorString]!.cgColor
         } else {
             button.layer.borderColor = UIColor.lightGray.cgColor
         }
-        
-        if let showBorders = KeycapSettings.getShowBorder() as? Int {
-            if showBorders == 1 {
-                button.layer.borderWidth = 2
-            } else {
-                button.layer.borderWidth = 0
-            }
+    }
+    
+    func styleKeycapColor(for button: UIButton) {
+        if let colorString = KeycapSettings.getKeycapColor() as? String {
+            button.backgroundColor = colorDictionary[colorString]
+        } else {
+            button.backgroundColor = UIColor.darkGray
         }
-        
+    }
+    
+    func styleLegendFont(for button: UIButton) -> Void {
+        if let textSize = KeycapSettings.getShowLargeText() as? Int {
+            button.titleLabel!.font = UIFont(name: "Helvetica Neue", size: CGFloat(textSize))
+        }
+    }
+    
+    
+    func styleLegendColor(for button: UIButton) {
+        if let colorString = KeycapSettings.getLegendColor() as? String {
+            button.setTitleColor(colorDictionary[colorString], for: .normal)
+        } else {
+            button.setTitleColor(UIColor.white, for: .normal)
+        }
+    }
+    
+    func styleModiferKeycapColor(for button: UIButton) {
+        if let colorString = KeycapSettings.getModifierColor() as? String {
+            button.backgroundColor = colorDictionary[colorString]
+        } else {
+            button.backgroundColor = UIColor.darkGray
+        }
+    }
+    
+    func styleRoundedCorners(for button: UIButton) {
         if let roundCorners = KeycapSettings.getShowRoundedCorners() as? Int {
             if roundCorners == 1 {
                 button.layer.cornerRadius = 10
@@ -205,56 +243,27 @@ class KeyboardViewController: UIInputViewController {
                 button.layer.cornerRadius = 0
             }
         }
-        
-        
     }
     
-    func styleKeycap(for button: UIButton) -> Void {
-        
-        if let colorString = KeycapSettings.getLegendColor() as? String {
-            button.setTitleColor(colorDictionary[colorString], for: .normal)
-        } else {
-            button.setTitleColor(UIColor.white, for: .normal)
+    func styleShowBorders(for button: UIButton)  {
+        if let showBorders = KeycapSettings.getShowBorder() as? Int {
+            if showBorders == 1 {
+                button.layer.borderWidth = 2
+            } else {
+                button.layer.borderWidth = 0
+            }
         }
-
-        if let colorString = KeycapSettings.getKeycapColor() as? String {
-            button.backgroundColor = colorDictionary[colorString]
-        } else {
-            button.backgroundColor = UIColor.darkGray
-        }
-        
     }
     
-    func styleModifiers(for button: UIButton) -> Void {
-        
-        if let colorString = KeycapSettings.getLegendColor() as? String {
-            button.setTitleColor(colorDictionary[colorString], for: .normal)
-        } else {
-            button.setTitleColor(UIColor.white, for: .normal)
-        }
-        
-        if let colorString = KeycapSettings.getModifierColor() as? String {
-            button.backgroundColor = colorDictionary[colorString]
-        } else {
-            button.backgroundColor = UIColor.darkGray
-        }
-        
-    }
-    
-    func styleSpacebar() -> Void {
-        
-        if let colorString = KeycapSettings.getLegendColor() as? String {
-            spacebarButton.setTitleColor(colorDictionary[colorString], for: .normal)
-        } else {
-            spacebarButton.setTitleColor(UIColor.white, for: .normal)
-        }
-        
+    func styleSpacebarKeycapColor() {
         if let colorString = KeycapSettings.getSpaceBarColor() as? String {
             spacebarButton.backgroundColor = colorDictionary[colorString]
         } else {
             spacebarButton.backgroundColor = UIColor.darkGray
         }
-        
+    }
+    
+    func styleSpacebarText() {
         if let spacebarText = KeycapSettings.getShowSpaceBarText() as? Int {
             spacebarButton.setTitle("space", for: .normal)
             if spacebarText == 0 {
@@ -264,22 +273,6 @@ class KeyboardViewController: UIInputViewController {
                     spacebarButton.setTitleColor(colorDictionary[colorString], for: .normal)
                 }
             }
-        }
-        
-    }
-    
-    
-    func styleLegendFont(for button: UIButton) -> Void {
-        if let textSize = KeycapSettings.getShowLargeText() as? Int {
-            button.titleLabel!.font = UIFont(name: "Helvetica Neue", size: CGFloat(textSize))
-        }
-    }
-    
-    func styleBackground() -> Void {
-        if let colorString = KeycapSettings.getBackgroundColor() as? String {
-            boardBackground.backgroundColor = colorDictionary[colorString]
-        } else {
-            boardBackground.backgroundColor = UIColor.lightGray
         }
     }
 
