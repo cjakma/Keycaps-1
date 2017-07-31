@@ -20,6 +20,7 @@ class KeyboardViewController: UIInputViewController {
     
     let colorDictionary = KeycapColors.getDictionary()
     var capsLockOn      = false
+    var shiftOn         = true
     var defaultKeysOn   = true
     
     let defaultKeys = ["0": "&", "1": "\'", "2": "\"", "3": ":", "4": ";", "5": "@", "6": ".", "7": ",",
@@ -51,12 +52,18 @@ class KeyboardViewController: UIInputViewController {
         
         styleAllButtons()
 
-
     }
     
     @IBAction func keyPressed(button: UIButton) {
         let string = button.titleLabel!.text
         (textDocumentProxy as UIKeyInput).insertText("\(string!)")
+        
+        if shiftOn {
+            shiftOn = false
+            
+            changeCaps(buttons: buttonCollection)
+            updateShift(button: shiftButton)
+        }
     }
     
     @IBAction func backSpacePressed(button: UIButton) {
@@ -64,21 +71,79 @@ class KeyboardViewController: UIInputViewController {
     }
     
     @IBAction func spacePressed(button: UIButton) {
+        checkForQuickPeriod()
         (textDocumentProxy as UIKeyInput).insertText(" ")
+        checkForPunctuation()
     }
     
     @IBAction func returnPressed(button: UIButton) {
         (textDocumentProxy as UIKeyInput).insertText("\n")
     }
     
-    @IBAction func capsLockPressed(button: UIButton) {
-        capsLockOn = !capsLockOn
+    @IBAction func shiftPressed(button: UIButton) {
+        
+        shiftOn = !shiftOn
         
         changeCaps(buttons: buttonCollection)
         updateShift(button: shiftButton)
+    }
+    
+    ////
+    // Typing
+    ////
+    func changeCaps(buttons:  [UIButton]!) {
+        for button in buttonCollection {
+            let buttonTitle = button.titleLabel!.text
+            if capsLockOn || shiftOn {
+                let text = buttonTitle!.uppercased()
+                button.setTitle("\(text)", for: .normal)
+            } else {
+                let text = buttonTitle!.lowercased()
+                button.setTitle("\(text)", for: .normal)
+            }
+        }
+    }
+    
+    func updateShift(button: UIButton) -> Void {
+        if shiftOn {
+            button.setTitleColor(.green, for: .normal)
+        } else {
+            button.setTitleColor(.black, for: .normal)
+        }
+    }
+    
+    func checkForPunctuation() {
+        if let precedingContext: String = self.textDocumentProxy.documentContextBeforeInput {
+            
+            switch String(precedingContext.characters.suffix(2)) {
+            case ". ", "? ", "! ":
+                shiftOn = true
+                changeCaps(buttons: buttonCollection)
+                updateShift(button: shiftButton)
+            default:
+                print("")
+            }
+        }
+    }
+    
+    func checkForQuickPeriod() {
+        if let precedingContext: String = self.textDocumentProxy.documentContextBeforeInput {
+            if precedingContext.characters.last! == " " {
+                (textDocumentProxy as UIKeyInput).deleteBackward()
+                (textDocumentProxy as UIKeyInput).insertText(".")
+                
+                shiftOn = true
+                changeCaps(buttons: buttonCollection)
+                updateShift(button: shiftButton)
+            }
+        }
         
     }
     
+    
+    ////
+    // Styling
+    ///
     func styleAllButtons() {
         for button in buttonCollection {
             styleKeycap(for: button)
@@ -92,27 +157,6 @@ class KeyboardViewController: UIInputViewController {
         
         styleBackground()
         styleSpacebar()
-    }
-    
-    func changeCaps(buttons:  [UIButton]!) {
-        for button in buttonCollection {
-            let buttonTitle = button.titleLabel!.text
-            if capsLockOn {
-                let text = buttonTitle!.uppercased()
-                button.setTitle("\(text)", for: .normal)
-            } else {
-                let text = buttonTitle!.lowercased()
-                button.setTitle("\(text)", for: .normal)
-            }
-        }
-    }
-    
-    func updateShift(button: UIButton) -> Void {
-        if capsLockOn {
-            button.setTitleColor(.green, for: .normal)
-        } else {
-            button.setTitleColor(.black, for: .normal)
-        }
     }
     
     @IBAction func switchKeys(_ sender: UIButton) {
