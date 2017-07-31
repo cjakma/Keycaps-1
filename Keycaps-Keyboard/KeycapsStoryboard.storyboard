@@ -503,7 +503,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="7Bm-5O-UyD" kind="presentation" id="xbb-3S-Kdb"/>
+                                                    <segue destination="7Bm-5O-UyD" kind="presentation" modalTransitionStyle="flipHorizontal" id="xbb-3S-Kdb"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPM-Ax-HVH">
@@ -632,17 +632,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jmC-W5-SJl">
-                                <rect key="frame" x="0.0" y="412" width="320" height="156"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="156" id="xSN-Qd-4se"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="JIG-hY-XeQ" kind="embed" identifier="embedSettingsTableVVC" id="iWy-K9-2xA"/>
-                                </connections>
-                            </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="xdw-gQ-P92">
-                                <rect key="frame" x="0.0" y="362" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YzQ-k7-WMs">
                                         <rect key="frame" x="0.0" y="0.0" width="170" height="50"/>
@@ -659,9 +650,19 @@
                                     <constraint firstAttribute="height" constant="50" id="rNO-aq-JTv"/>
                                 </constraints>
                             </stackView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jmC-W5-SJl">
+                                <rect key="frame" x="0.0" y="72" width="320" height="496"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="206" id="Grq-10-Hxa"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="JIG-hY-XeQ" kind="embed" identifier="embedSettingsTableVVC" id="iWy-K9-2xA"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="xdw-gQ-P92" firstAttribute="top" secondItem="mH2-eL-28S" secondAttribute="bottom" constant="2" id="67B-Yr-rMU"/>
                             <constraint firstItem="xdw-gQ-P92" firstAttribute="leading" secondItem="Kcl-DG-dRz" secondAttribute="leading" id="Cve-wp-iLg"/>
                             <constraint firstItem="ATA-k5-Xsd" firstAttribute="top" secondItem="jmC-W5-SJl" secondAttribute="bottom" id="GDt-4Q-8uy"/>
                             <constraint firstItem="jmC-W5-SJl" firstAttribute="top" secondItem="xdw-gQ-P92" secondAttribute="bottom" id="V6E-bP-dx9"/>
@@ -680,7 +681,7 @@
             <objects>
                 <tableViewController id="JIG-hY-XeQ" customClass="MoreSettingsTableViewController" customModule="Keycaps_Keyboard" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KhA-UC-Hsj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="156"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="496"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -709,7 +710,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="65P-rB-4ia" kind="show" identifier="backgroundColor" id="24M-p9-aUT"/>
+                                            <segue destination="65P-rB-4ia" kind="showDetail" identifier="backgroundColor" action="showViewController:sender:" id="24M-p9-aUT"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="JWm-kW-Uve">
@@ -734,7 +735,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="65P-rB-4ia" kind="show" identifier="borderColor" id="6PQ-MG-OUP"/>
+                                            <segue destination="65P-rB-4ia" kind="showDetail" identifier="borderColor" action="showViewController:sender:" id="6PQ-MG-OUP"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="WAr-rd-heb">
@@ -759,7 +760,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="65P-rB-4ia" kind="show" identifier="buttonColor" id="3Z1-J5-jYv"/>
+                                            <segue destination="65P-rB-4ia" kind="showDetail" identifier="buttonColor" action="showViewController:sender:" id="3Z1-J5-jYv"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="XDn-jr-ghW">
@@ -784,7 +785,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="65P-rB-4ia" kind="show" identifier="letterColor" id="A2W-28-jef"/>
+                                            <segue destination="65P-rB-4ia" kind="showDetail" identifier="letterColor" action="showViewController:sender:" id="A2W-28-jef"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="ors-RY-BC2">
@@ -809,7 +810,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="65P-rB-4ia" kind="show" identifier="modiferColor" id="cN9-HB-RKP"/>
+                                            <segue destination="65P-rB-4ia" kind="showDetail" identifier="modiferColor" action="showViewController:sender:" id="cN9-HB-RKP"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="v9D-YS-iY3">
@@ -834,7 +835,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="65P-rB-4ia" kind="show" identifier="spacebarColor" id="YnC-6L-LuA"/>
+                                            <segue destination="65P-rB-4ia" kind="showDetail" identifier="spacebarColor" action="showViewController:sender:" id="YnC-6L-LuA"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -984,11 +985,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Z6H-BK-nmZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mLQ-9j-G0f">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="156"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="53s-Qk-JaL">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="156"/>
+                                <rect key="frame" x="0.0" y="52" width="320" height="516"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5CH-Ie-vny">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="78"/>
@@ -998,19 +999,15 @@
                                         </constraints>
                                     </view>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PN9-IO-ywC">
-                                        <rect key="frame" x="0.0" y="78" width="320" height="78"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="78" id="0ZY-by-Mv2"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="78" width="320" height="438"/>
                                     </pickerView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="156" id="6Sv-Q3-0Ax"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="156" id="Yir-78-rXN"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WFU-dL-YqC">
-                                <rect key="frame" x="0.0" y="-50" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="2" width="320" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dM-lG-TCN">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="50"/>
@@ -1036,6 +1033,7 @@
                         <constraints>
                             <constraint firstItem="WFU-dL-YqC" firstAttribute="leading" secondItem="mLQ-9j-G0f" secondAttribute="leading" id="Fx5-bm-xyk"/>
                             <constraint firstAttribute="trailing" secondItem="53s-Qk-JaL" secondAttribute="trailing" id="PpG-sX-THt"/>
+                            <constraint firstItem="WFU-dL-YqC" firstAttribute="top" secondItem="vIc-Cz-Dln" secondAttribute="bottom" constant="2" id="TNO-lh-npJ"/>
                             <constraint firstItem="53s-Qk-JaL" firstAttribute="leading" secondItem="mLQ-9j-G0f" secondAttribute="leading" id="Tof-rD-6Po"/>
                             <constraint firstAttribute="trailing" secondItem="WFU-dL-YqC" secondAttribute="trailing" id="fdp-O5-vpf"/>
                             <constraint firstItem="53s-Qk-JaL" firstAttribute="top" secondItem="WFU-dL-YqC" secondAttribute="bottom" id="gvZ-CA-AkY"/>
@@ -1054,6 +1052,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3Z1-J5-jYv"/>
+        <segue reference="A2W-28-jef"/>
     </inferredMetricsTieBreakers>
 </document>
