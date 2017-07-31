@@ -22,15 +22,17 @@ class KeyboardViewController: UIInputViewController {
     var capsLockOn      = false
     var defaultKeysOn   = true
     
-    let defaultKeys = ["0": "q", "1": "w", "2": "e", "3": "r", "4": "t", "5": "y", "6": "u", "7": "i",
-                       "8": "o", "9": "p", "10": "a", "11": "s", "12": "d", "13": "f", "14": "g",
-                       "15": "h", "16": "j", "17": "k", "18": "l", "19": "z", "20": "x", "21": "c",
-                       "22": "v", "23": "b", "24": "n", "25": "m"]
+    let defaultKeys = ["0": "1", "1": "2", "2": "3", "3": "4", "4": "5", "5": "6", "6": "7", "7": "8",
+                       "8": "9", "9": "0", "10": "q", "11": "w", "12": "e", "13": "r", "14": "t", "15": "y",
+                       "16": "u", "17": "i", "18": "o", "19": "p", "20": "a", "21": "s", "22": "d", "23": "f",
+                       "24": "g", "25": "h", "26": "j", "27": "k", "28": "l", "29": "z", "30": "x", "31": "c",
+                       "32": "v", "33": "b", "34": "n", "35": "m"]
     
-    let numberKeys = ["0": "1", "1": "2", "2": "3", "3": "4", "4": "5", "5": "6", "6": "7", "7": "8",
-                      "8": "9", "9": "0", "10": "-", "11": "/", "12": ":", "13": ";", "14": "(",
-                       "15": ")", "16": "$", "17": "@", "18": "\"", "19": ".", "20": ",", "21": "?",
-                       "22": "!", "23": "\'", "24": "+", "25": "*"]
+    let numberKeys = ["0": "[", "1": "]", "2": "{", "3": "}", "4": "(", "5": ")", "6": "<",
+                      "7": ">", "8": "~", "9": "`", "10": "\\", "11": "|", "12": "/", "13": "\"",
+                      "14": "\'", "15": "_", "16": "-", "17": "+", "18": "*", "19": "=", "20": "%",
+                      "21": "^", "22": "¢", "23": "€", "24": "£", "25": "¥", "26": "•", "27": ":", "28": ";", "29": "$", "30": "&", "31": "@", "32": ".", "33": ",", "34": "?", "35": "!"
+    ]
     
     //    let specialCharacterKeys = ["": ""]
     
@@ -113,7 +115,6 @@ class KeyboardViewController: UIInputViewController {
     }
     
     @IBAction func switchKeys(_ sender: UIButton) {
-        defaultKeysOn = !defaultKeysOn
         
         if defaultKeysOn {
             for (index, button) in buttonCollection.enumerated() {
@@ -134,12 +135,14 @@ class KeyboardViewController: UIInputViewController {
             }
             
             shiftButton.isEnabled = true
-            numAlphaKey.setTitle("123", for: .normal)
+            numAlphaKey.setTitle("#+=", for: .normal)
 
             styleLegendColor(for: shiftButton)
-            styleKeycap(for: shiftButton)
+            styleModifiers(for: shiftButton)
             styleBorderColor(for: shiftButton)
         }
+        
+        defaultKeysOn = !defaultKeysOn
     }
     
     override func didReceiveMemoryWarning() {
