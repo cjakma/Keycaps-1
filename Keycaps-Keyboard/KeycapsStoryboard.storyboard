@@ -974,7 +974,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pzJ-4h-7Zi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-309" y="782"/>
+            <point key="canvasLocation" x="-1440" y="743"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="XtZ-sC-NEj">
@@ -1018,10 +1018,6 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UK-7l-aet">
                                         <rect key="frame" x="160" y="0.0" width="160" height="50"/>
-                                        <state key="normal" title="save"/>
-                                        <connections>
-                                            <action selector="save:" destination="65P-rB-4ia" eventType="touchUpInside" id="N4s-eO-90k"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1048,10 +1044,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzn-pG-V9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="827" y="782"/>
+            <point key="canvasLocation" x="-309" y="743"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="A2W-28-jef"/>
+        <segue reference="3Z1-J5-jYv"/>
     </inferredMetricsTieBreakers>
 </document>

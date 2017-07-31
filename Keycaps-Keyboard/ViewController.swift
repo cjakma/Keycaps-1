@@ -49,6 +49,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let colorString = pickerData[row]
         updateColorBlock(to: colorDictionary[colorString]!)
+        save(selected: colorString)
     }
     
     func updateColorBlock(to color: UIColor) -> Void {
@@ -60,25 +61,23 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
 
 
-    @IBAction func save(_ sender: Any) {
-        let selectedColorIndex  = picker.selectedRow(inComponent: 0)
-        let selectedColorString = pickerData[selectedColorIndex]
+    func save(selected colorString: String) {
         
         let segueID = getSegueID(from: data!)
         
         switch segueID {
         case "backgroundColor":
-            KeycapSettings.setBackground(colorString: selectedColorString)
+            KeycapSettings.setBackground(colorString: colorString)
         case "buttonColor":
-            KeycapSettings.setKeycap(colorString: selectedColorString)
+            KeycapSettings.setKeycap(colorString: colorString)
         case "borderColor":
-            KeycapSettings.setBorder(colorString: selectedColorString)
+            KeycapSettings.setBorder(colorString: colorString)
         case "letterColor":
-            KeycapSettings.setLegend(colorString: selectedColorString)
+            KeycapSettings.setLegend(colorString: colorString)
         case "modiferColor":
-            KeycapSettings.setModifier(colorString: selectedColorString)
+            KeycapSettings.setModifier(colorString: colorString)
         case "spacebarColor":
-            KeycapSettings.setSpacebar(colorString: selectedColorString)
+            KeycapSettings.setSpacebar(colorString: colorString)
         default:
           print(segueID)
         }
