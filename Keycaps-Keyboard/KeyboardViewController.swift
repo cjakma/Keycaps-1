@@ -49,6 +49,7 @@ class KeyboardViewController: UIInputViewController {
         
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         
+        
         for button in buttonCollection {
             styleKeycap(for: button)
             styleLegendFont(for: button)
@@ -62,6 +63,7 @@ class KeyboardViewController: UIInputViewController {
         styleBackground()
         styleSpacebar()
         
+
     }
     
     @IBAction func keyPressed(button: UIButton) {
