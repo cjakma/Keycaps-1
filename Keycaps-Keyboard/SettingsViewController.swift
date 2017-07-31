@@ -23,6 +23,7 @@ class SettingsViewController: UIViewController {
     
 
     @IBAction func dismiss(_ sender: Any) {
+        
         dismiss(animated: true, completion: {})
     }
     
