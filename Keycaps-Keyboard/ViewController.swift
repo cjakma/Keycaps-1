@@ -27,6 +27,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         picker.delegate = self
         picker.dataSource = self
         
+        autoSetPicker()
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +59,51 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func getSegueID(from data: Data) -> String {
         return data.base64EncodedString().fromBase64()!
+    }
+    
+    func autoSetPicker() {
+        
+        let segueID = getSegueID(from: data!)
+        
+        switch segueID {
+        case "backgroundColor":
+            if let colorString = KeycapSettings.getBackgroundColor() as? String {
+                comparePickerData(to: colorString)
+            }
+        case "buttonColor":
+            if let colorString = KeycapSettings.getKeycapColor() as? String {
+                comparePickerData(to: colorString)
+            }
+        case "borderColor":
+            if let colorString = KeycapSettings.getBorderColor() as? String {
+                comparePickerData(to: colorString)
+            }
+        case "letterColor":
+            if let colorString = KeycapSettings.getLegendColor() as? String {
+                comparePickerData(to: colorString)
+            }
+        case "modiferColor":
+            if let colorString = KeycapSettings.getModifierColor() as? String {
+                comparePickerData(to: colorString)
+            }
+        case "spacebarColor":
+            if let colorString = KeycapSettings.getSpaceBarColor() as? String {
+                comparePickerData(to: colorString)
+            }
+        default:
+            print(segueID)
+        }
+        
+    }
+    
+    func comparePickerData(to colorString: String?) {
+        for i in 0...pickerData.count {
+            if pickerData[i] == colorString {
+                picker.selectRow(i, inComponent: 0, animated: true)
+                updateColorBlock(to: colorDictionary[colorString!]!)
+                break
+            }
+        }
     }
 
 

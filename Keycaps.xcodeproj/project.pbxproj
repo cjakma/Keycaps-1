@@ -20,6 +20,8 @@
 		68D8FA171F2A3FE500956CAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8FA161F2A3FE500956CAD /* ViewController.swift */; };
 		68D8FA1B1F2A578600956CAD /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D8FA1A1F2A578600956CAD /* StringExtension.swift */; };
 		68E9A5711F2A9AFC0021E131 /* MoreSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E9A5701F2A9AFC0021E131 /* MoreSettingsTableViewController.swift */; };
+		68EF77121F31042C00BFB85B /* Quivira.otf in Resources */ = {isa = PBXBuildFile; fileRef = 68EF77111F31042C00BFB85B /* Quivira.otf */; };
+		68EF77131F31042C00BFB85B /* Quivira.otf in Resources */ = {isa = PBXBuildFile; fileRef = 68EF77111F31042C00BFB85B /* Quivira.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,7 @@
 		68D8FA161F2A3FE500956CAD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		68D8FA1A1F2A578600956CAD /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		68E9A5701F2A9AFC0021E131 /* MoreSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreSettingsTableViewController.swift; sourceTree = "<group>"; };
+		68EF77111F31042C00BFB85B /* Quivira.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Quivira.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,7 @@
 				68E9A56D1F2A9A3A0021E131 /* Utilities */,
 				68E9A56C1F2A9A090021E131 /* ViewControllers */,
 				68B7C2901F27B644002CC5AA /* KeycapsStoryboard.storyboard */,
+				68EF77111F31042C00BFB85B /* Quivira.otf */,
 				68B7C2881F27B620002CC5AA /* Info.plist */,
 			);
 			path = "Keycaps-Keyboard";
@@ -233,6 +237,7 @@
 				68B7C2791F27B5FF002CC5AA /* LaunchScreen.storyboard in Resources */,
 				68B7C2761F27B5FF002CC5AA /* Assets.xcassets in Resources */,
 				68B7C2741F27B5FF002CC5AA /* Main.storyboard in Resources */,
+				68EF77121F31042C00BFB85B /* Quivira.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68B7C2911F27B644002CC5AA /* KeycapsStoryboard.storyboard in Resources */,
+				68EF77131F31042C00BFB85B /* Quivira.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

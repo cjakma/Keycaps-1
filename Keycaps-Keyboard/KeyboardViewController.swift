@@ -10,13 +10,16 @@ import UIKit
 
 class KeyboardViewController: UIInputViewController {
 
+    @IBOutlet var buttonCollection:        [UIButton]!
+    @IBOutlet var modifierCollection:      [UIButton]!
+    @IBOutlet var boardBackground:         UIView!
+    @IBOutlet weak var spacebarButton:     UIButton!
+    @IBOutlet weak var shiftButton:        UIButton!
+    @IBOutlet weak var numAlphaKey:        UIButton!
+    @IBOutlet weak var backspaceButton:    UIButton!
+    @IBOutlet weak var returnButton:       UIButton!
+    @IBOutlet weak var settingsButton:     UIButton!
     @IBOutlet weak var nextKeyboardButton: UIButton!
-    @IBOutlet var buttonCollection: [UIButton]!
-    @IBOutlet var modifierCollection: [UIButton]!
-    @IBOutlet var boardBackground: UIView!
-    @IBOutlet weak var spacebarButton: UIButton!
-    @IBOutlet weak var shiftButton: UIButton!
-    @IBOutlet weak var numAlphaKey: UIButton!
     
     let colorDictionary = KeycapColors.getDictionary()
     var capsLockOn      = false
@@ -46,13 +49,20 @@ class KeyboardViewController: UIInputViewController {
         
         // Perform custom UI setup here
 
-        self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
+        nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
         
-        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        
+        shiftButton.setTitle("\u{2b06}", for: .normal)
+        returnButton.setTitle("\u{21B5}", for: .normal)
+        settingsButton.setTitle("\u{2699}", for: .normal)
+        backspaceButton.setTitle("\u{232B}", for: .normal)
+        nextKeyboardButton.setTitle("\u{1F310}", for: .normal)
         
         styleAllButtons()
 
     }
+    
     
     @IBAction func keyPressed(button: UIButton) {
         let string = button.titleLabel!.text
@@ -106,9 +116,9 @@ class KeyboardViewController: UIInputViewController {
     
     func updateShift(button: UIButton) -> Void {
         if shiftOn {
-            button.setTitleColor(.green, for: .normal)
+            shiftButton.setTitle("\u{2b06}", for: .normal)
         } else {
-            button.setTitleColor(.black, for: .normal)
+            shiftButton.setTitle("\u{21e7}", for: .normal)
         }
     }
     
@@ -180,7 +190,7 @@ class KeyboardViewController: UIInputViewController {
             }
             
             shiftButton.isEnabled = true
-            numAlphaKey.setTitle("#+=", for: .normal)
+            numAlphaKey.setTitle("123", for: .normal)
 
             styleLegendColor(for: shiftButton)
             styleModifiers(for: shiftButton)
@@ -204,16 +214,15 @@ class KeyboardViewController: UIInputViewController {
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         
-        var textColor: UIColor
-        let proxy = self.textDocumentProxy
+//        var textColor: UIColor
+//        let proxy = self.textDocumentProxy
+//        
+//        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
+//            textColor = UIColor.white
+//        } else {
+//            textColor = UIColor.black
+//        }
         
-        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
-            textColor = UIColor.white
-        } else {
-            textColor = UIColor.black
-        }
-        
-        self.nextKeyboardButton.setTitleColor(textColor, for: [])
     }
     
     func styleBorders(for button: UIButton) -> Void {
