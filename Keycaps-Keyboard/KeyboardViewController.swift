@@ -17,6 +17,9 @@ class KeyboardViewController: UIInputViewController {
     @IBOutlet weak var spacebarButton: UIButton!
     @IBOutlet weak var shiftButton: UIButton!
     @IBOutlet weak var numAlphaKey: UIButton!
+    @IBOutlet weak var backspaceButton: UIButton!
+    @IBOutlet weak var returnButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
     
     let colorDictionary = KeycapColors.getDictionary()
     var capsLockOn      = false
@@ -49,6 +52,17 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
         
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        
+        self.shiftButton.setTitle("\u{21E7}", for: .normal)
+        self.shiftButton.setTitle("\u{2b06}", for: .normal)
+
+        self.returnButton.setTitle("\u{21B5}", for: .normal)
+        self.settingsButton.setTitle("\u{2699}", for: .normal)
+
+        
+        self.backspaceButton.setTitle("\u{232B}", for: .normal)
+        self.nextKeyboardButton.setTitle("\u{1F310}", for: .normal)
+
         
         styleAllButtons()
 
