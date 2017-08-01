@@ -12,11 +12,11 @@ import UIKit
 struct KeycapColors {
     
 
-    static let bluebird      = UIColor(red: 89/255, green: 180/255, blue: 234/255, alpha: 1.0)
-    static let chocolate      = UIColor(red: 95/255, green: 43/255, blue: 12/255, alpha: 1.0)
-    static let orange        = UIColor(red: 234/255, green: 143/255, blue: 89/255, alpha: 1.0)
-    static let strawberry    = UIColor(red: 234/255, green: 89/255, blue: 108/255, alpha: 1.0)
-    static let yellow        = UIColor(red: 234/255, green: 216/255, blue: 89/255, alpha: 1.0)
+    static let bluebird      = UIColor(red: 0/255, green: 211/255, blue: 230/255, alpha: 1.0)
+    static let chocolate     = UIColor(red: 95/255, green: 43/255, blue: 12/255, alpha: 1.0)
+    static let orange        = UIColor(red: 230/255, green: 134/255, blue: 0/255, alpha: 1.0)
+    static let strawberry    = UIColor(red: 230/255, green: 0/255, blue: 96/255, alpha: 1.0)
+    static let yellow        = UIColor(red: 211/255, green: 230/255, blue: 0/255, alpha: 1.0)
 
     static let black         = UIColor.black
     static let grayDark      = UIColor(red: 90/255, green: 90/255, blue: 90/255, alpha: 1.0)
