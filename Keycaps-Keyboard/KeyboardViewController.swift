@@ -66,6 +66,20 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         styleAllButtons()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setInitialHeight() // Initial load is smooth due to this
+    }
+    
+    
+    func setInitialHeight() {
+        let expandedHeight: CGFloat = 270 // fixed for all phone sizes != ideal
+        
+        let heightConstraint: NSLayoutConstraint =  NSLayoutConstraint(item: self.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: expandedHeight)
+        
+        self.view.addConstraint(heightConstraint)
+    }
+    
     func dismissViewControllerAndReloadKeyboard() {
         styleAllButtons()
         self.dismiss(animated: true, completion: nil)
