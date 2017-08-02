@@ -85,15 +85,21 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         self.dismiss(animated: true, completion: nil)
     }
     
+    ////
+    // Typing
+    ////
     @IBAction func keyPressed(button: UIButton) {
         let string = button.titleLabel!.text
-        (textDocumentProxy as UIKeyInput).insertText("\(string!)")
         
         if shiftOn {
+            (textDocumentProxy as UIKeyInput).insertText("\(string!.uppercased())")
+
             shiftOn = false
             
             changeCaps(buttons: buttonCollection)
             updateShift(button: shiftButton)
+        } else {
+            (textDocumentProxy as UIKeyInput).insertText("\(string!.lowercased())")
         }
     }
     
@@ -119,9 +125,6 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         updateShift(button: shiftButton)
     }
     
-    ////
-    // Typing
-    ////
     func changeCaps(buttons:  [UIButton]!) {
         for button in buttonCollection {
             let buttonTitle = button.titleLabel!.text
