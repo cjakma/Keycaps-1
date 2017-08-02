@@ -8,7 +8,11 @@
 
 import UIKit
 
-class KeyboardViewController: UIInputViewController {
+protocol DismissViewControllerProtocol {
+    func dismissViewControllerAndReloadKeyboard()
+}
+
+class KeyboardViewController: UIInputViewController, DismissViewControllerProtocol {
 
     @IBOutlet var buttonCollection:        [UIButton]!
     @IBOutlet var modifierCollection:      [UIButton]!
@@ -46,23 +50,26 @@ class KeyboardViewController: UIInputViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Perform custom UI setup here
 
         nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
-        
+
         nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-        
+
         shiftButton.setTitle("\u{2b06}", for: .normal)
         returnButton.setTitle("\u{21B5}", for: .normal)
         settingsButton.setTitle("\u{2699}", for: .normal)
         backspaceButton.setTitle("\u{232B}", for: .normal)
         nextKeyboardButton.setTitle("\u{1F310}", for: .normal)
-        
-        styleAllButtons()
 
+        styleAllButtons()
     }
     
+    func dismissViewControllerAndReloadKeyboard() {
+        styleAllButtons()
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func keyPressed(button: UIButton) {
         let string = button.titleLabel!.text
@@ -161,10 +168,10 @@ class KeyboardViewController: UIInputViewController {
         }
         
         for button in modifierCollection { styleModifiers(for: button) }
-        
+
         let allButtons: [UIButton] = buttonCollection + modifierCollection
         for button in allButtons { styleBorders(for: button) }
-        
+
         styleBackground()
         styleSpacebar()
     }

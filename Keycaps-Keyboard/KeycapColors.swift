@@ -13,7 +13,7 @@ struct KeycapColors {
     
 
     static let bluebird      = UIColor(red: 0/255, green: 211/255, blue: 230/255, alpha: 1.0)
-    static let lime         = UIColor(red: 211/255, green: 230/255, blue: 0/255, alpha: 1.0)
+    static let lime          = UIColor(red: 211/255, green: 230/255, blue: 0/255, alpha: 1.0)
     static let orange        = UIColor(red: 230/255, green: 134/255, blue: 0/255, alpha: 1.0)
     static let strawberry    = UIColor(red: 230/255, green: 0/255, blue: 96/255, alpha: 1.0)
 

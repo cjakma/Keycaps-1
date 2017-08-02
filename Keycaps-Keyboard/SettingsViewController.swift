@@ -9,6 +9,8 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    var delegate: DismissViewControllerProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,8 @@ class SettingsViewController: UIViewController {
 
     @IBAction func dismiss(_ sender: Any) {
         
-        dismiss(animated: true, completion: {})
+//        dismiss(animated: true, completion: {})
+        self.delegate.dismissViewControllerAndReloadKeyboard()
     }
     
 
