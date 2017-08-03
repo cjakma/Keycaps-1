@@ -67,7 +67,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     
     func dismissViewControllerAndReloadKeyboard() {
         styleAllButtons()
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
     ////
@@ -90,6 +90,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     
     @IBAction func backSpacePressed(button: UIButton) {
         (textDocumentProxy as UIKeyInput).deleteBackward()
+        checkForNoPrecedingText()
     }
     
     @IBAction func spacePressed(button: UIButton) {
@@ -129,6 +130,16 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         } else {
             shiftButton.setTitle("\u{21e7}", for: .normal)
         }
+    }
+    
+    func checkForNoPrecedingText() {
+        guard let documentContext = self.textDocumentProxy.documentContextBeforeInput  else {
+            shiftOn = true
+            changeCaps(buttons: buttonCollection)
+            updateShift(button: shiftButton)
+            return
+        }
+        
     }
     
     func checkForPunctuation() {
