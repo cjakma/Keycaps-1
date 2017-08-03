@@ -131,7 +131,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     @IBAction func dismiss(_ sender: Any) {
-        dismiss(animated: true, completion: {})
+        dismiss(animated: false, completion: {})
     }
 
 }

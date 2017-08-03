@@ -24,23 +24,22 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     @IBOutlet weak var returnButton:       UIButton!
     @IBOutlet weak var settingsButton:     UIButton!
     @IBOutlet weak var nextKeyboardButton: UIButton!
+    @IBOutlet weak var mButton: UIButton!
     
     let colorDictionary = KeycapColors.getDictionary()
     var capsLockOn      = false
     var shiftOn         = true
     var defaultKeysOn   = true
     
-    let defaultKeys = ["0": "&", "1": "\'", "2": "\"", "3": ":", "4": ";", "5": "@", "6": ".", "7": ",",
-                       "8": "?", "9": "!", "10": "q", "11": "w", "12": "e", "13": "r", "14": "t", "15": "y",
-                       "16": "u", "17": "i", "18": "o", "19": "p", "20": "a", "21": "s", "22": "d", "23": "f",
-                       "24": "g", "25": "h", "26": "j", "27": "k", "28": "l", "29": "z", "30": "x", "31": "c",
-                       "32": "v", "33": "b", "34": "n", "35": "m"]
+    let defaultKeys = ["0": "q", "1": "w", "2": "e", "3": "r", "4": "t", "5": "y",
+                       "6": "u", "7": "i", "8": "o", "9": "p", "10": "a", "11": "s", "12": "d", "13": "f",
+                       "14": "g", "15": "h", "16": "j", "17": "k", "18": "l", "19": "z", "20": "x", "21": "c",
+                       "22": "v", "23": "b", "24": "n", "25": "m"]
     
     let numberKeys = ["0": "1", "1": "2", "2": "3", "3": "4", "4": "5", "5": "6", "6": "7", "7": "8",
-                      "8": "9", "9": "0", "10": "[", "11": "]", "12": "{", "13": "}", "14": "(",
-                      "15": ")", "16": "<", "17": ">", "18": "~", "19": "`", "20": "_", "21": "•",
-                      "22": "#", "23": "€", "24": "£", "25": "$", "26": "¥", "27": "%", "28": "^",
-                      "29": "\\", "30": "|", "31": "/", "32": "*", "33": "-", "34": "+", "35": "="]
+                      "8": "9", "9": "0", "10": "-", "11": "/", "12": ":", "13": ";", "14": "(",
+                      "15": ")", "16": "$", "17": "&", "18": "@", "19": "\"", "20": ".", "21": ",",
+                      "22": "?", "23": "!", "24": "‘"]
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -66,23 +65,9 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         styleAllButtons()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setInitialHeight() // Initial load is smooth due to this
-    }
-    
-    
-    func setInitialHeight() {
-        let expandedHeight: CGFloat = 270 // fixed for all phone sizes != ideal
-        
-        let heightConstraint: NSLayoutConstraint =  NSLayoutConstraint(item: self.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: expandedHeight)
-        
-        self.view.addConstraint(heightConstraint)
-    }
-    
     func dismissViewControllerAndReloadKeyboard() {
         styleAllButtons()
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
     ////
@@ -105,6 +90,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     
     @IBAction func backSpacePressed(button: UIButton) {
         (textDocumentProxy as UIKeyInput).deleteBackward()
+        checkForNoPrecedingText()
     }
     
     @IBAction func spacePressed(button: UIButton) {
@@ -144,6 +130,16 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         } else {
             shiftButton.setTitle("\u{21e7}", for: .normal)
         }
+    }
+    
+    func checkForNoPrecedingText() {
+        guard let documentContext = self.textDocumentProxy.documentContextBeforeInput  else {
+            shiftOn = true
+            changeCaps(buttons: buttonCollection)
+            updateShift(button: shiftButton)
+            return
+        }
+        
     }
     
     func checkForPunctuation() {
@@ -200,25 +196,34 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
                let keyCharacter = numberKeys["\(index)"]
                 button.setTitle(keyCharacter, for: .normal)
             }
+            
+            for button in [shiftButton, mButton] {
+                button?.isEnabled = false
 
-            shiftButton.isEnabled = false
+                button?.backgroundColor = UIColor.clear
+                button?.setTitleColor(UIColor.clear, for: .normal)
+                button?.layer.borderColor = UIColor.clear.cgColor
+            }
+            
             numAlphaKey.setTitle("abc", for: .normal)
-
-            shiftButton.backgroundColor = UIColor.clear
-            shiftButton.setTitleColor(UIColor.clear, for: .normal)
-            shiftButton.layer.borderColor = UIColor.clear.cgColor
         } else {
             for (index, button) in buttonCollection.enumerated() {
                 let keyCharacter = defaultKeys["\(index)"]
-                button.setTitle(keyCharacter, for: .normal)
+                if capsLockOn || shiftOn {
+                    button.setTitle(keyCharacter?.uppercased(), for: .normal)
+                } else {
+                    button.setTitle(keyCharacter?.lowercased(), for: .normal)
+                }
             }
             
-            shiftButton.isEnabled = true
+            for button in [shiftButton, mButton] {
+                button?.isEnabled = true
+                styleLegendColor(for: button!)
+                styleModifiers(for: button!)
+                styleBorderColor(for: button!)
+            }
+            
             numAlphaKey.setTitle("123", for: .normal)
-
-            styleLegendColor(for: shiftButton)
-            styleModifiers(for: shiftButton)
-            styleBorderColor(for: shiftButton)
         }
         
         defaultKeysOn = !defaultKeysOn
@@ -237,6 +242,8 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
+        
+        checkForNoPrecedingText()
         
 //        var textColor: UIColor
 //        let proxy = self.textDocumentProxy
