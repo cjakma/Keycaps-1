@@ -209,7 +209,11 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         } else {
             for (index, button) in buttonCollection.enumerated() {
                 let keyCharacter = defaultKeys["\(index)"]
-                button.setTitle(keyCharacter, for: .normal)
+                if capsLockOn || shiftOn {
+                    button.setTitle(keyCharacter?.uppercased(), for: .normal)
+                } else {
+                    button.setTitle(keyCharacter?.lowercased(), for: .normal)
+                }
             }
             
             for button in [shiftButton, mButton] {
