@@ -508,11 +508,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="xdw-gQ-P92">
-                                <rect key="frame" x="0.0" y="22" width="320" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="xdw-gQ-P92">
+                                <rect key="frame" x="0.0" y="15" width="320" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YzQ-k7-WMs">
-                                        <rect key="frame" x="0.0" y="0.0" width="205.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="205.5" height="18"/>
                                         <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="back"/>
                                         <connections>
@@ -528,7 +528,7 @@
                                 </constraints>
                             </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jmC-W5-SJl">
-                                <rect key="frame" x="0.0" y="62" width="320" height="506"/>
+                                <rect key="frame" x="0.0" y="55" width="320" height="513"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="206" id="Grq-10-Hxa"/>
@@ -540,7 +540,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xdw-gQ-P92" firstAttribute="top" secondItem="mH2-eL-28S" secondAttribute="bottom" constant="2" id="67B-Yr-rMU"/>
+                            <constraint firstItem="xdw-gQ-P92" firstAttribute="top" secondItem="mH2-eL-28S" secondAttribute="bottom" constant="-5" id="67B-Yr-rMU"/>
                             <constraint firstItem="xdw-gQ-P92" firstAttribute="leading" secondItem="Kcl-DG-dRz" secondAttribute="leading" id="Cve-wp-iLg"/>
                             <constraint firstItem="ATA-k5-Xsd" firstAttribute="top" secondItem="jmC-W5-SJl" secondAttribute="bottom" id="GDt-4Q-8uy"/>
                             <constraint firstItem="jmC-W5-SJl" firstAttribute="top" secondItem="xdw-gQ-P92" secondAttribute="bottom" constant="10" id="V6E-bP-dx9"/>
@@ -559,7 +559,7 @@
             <objects>
                 <tableViewController id="JIG-hY-XeQ" customClass="MoreSettingsTableViewController" customModule="Keycaps_Keyboard" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KhA-UC-Hsj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="506"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="513"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -863,32 +863,32 @@
                         <viewControllerLayoutGuide type="bottom" id="Z6H-BK-nmZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mLQ-9j-G0f">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="506"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="513"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="53s-Qk-JaL">
-                                <rect key="frame" x="0.0" y="62" width="320" height="444"/>
+                                <rect key="frame" x="0.0" y="55" width="320" height="458"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5CH-Ie-vny">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="78"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
                                         <color key="backgroundColor" red="0.0" green="0.82745098039215681" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="78" id="8tl-2n-JLp"/>
+                                            <constraint firstAttribute="height" constant="42" id="8tl-2n-JLp"/>
                                         </constraints>
                                     </view>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PN9-IO-ywC">
-                                        <rect key="frame" x="0.0" y="78" width="320" height="366"/>
+                                        <rect key="frame" x="0.0" y="42" width="320" height="416"/>
                                     </pickerView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="156" id="Yir-78-rXN"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WFU-dL-YqC">
-                                <rect key="frame" x="0.0" y="22" width="320" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="WFU-dL-YqC">
+                                <rect key="frame" x="0.0" y="15" width="320" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dM-lG-TCN">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="18"/>
                                         <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="back"/>
                                         <connections>
@@ -908,7 +908,7 @@
                         <constraints>
                             <constraint firstItem="WFU-dL-YqC" firstAttribute="leading" secondItem="mLQ-9j-G0f" secondAttribute="leading" id="Fx5-bm-xyk"/>
                             <constraint firstAttribute="trailing" secondItem="53s-Qk-JaL" secondAttribute="trailing" id="PpG-sX-THt"/>
-                            <constraint firstItem="WFU-dL-YqC" firstAttribute="top" secondItem="vIc-Cz-Dln" secondAttribute="bottom" constant="2" id="TNO-lh-npJ"/>
+                            <constraint firstItem="WFU-dL-YqC" firstAttribute="top" secondItem="vIc-Cz-Dln" secondAttribute="bottom" constant="-5" id="TNO-lh-npJ"/>
                             <constraint firstItem="53s-Qk-JaL" firstAttribute="leading" secondItem="mLQ-9j-G0f" secondAttribute="leading" id="Tof-rD-6Po"/>
                             <constraint firstAttribute="trailing" secondItem="WFU-dL-YqC" secondAttribute="trailing" id="fdp-O5-vpf"/>
                             <constraint firstItem="53s-Qk-JaL" firstAttribute="top" secondItem="WFU-dL-YqC" secondAttribute="bottom" constant="10" id="gvZ-CA-AkY"/>
