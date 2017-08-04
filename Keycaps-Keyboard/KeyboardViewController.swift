@@ -19,13 +19,12 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     @IBOutlet var modifierCollection:     [UIButton]!
     @IBOutlet var nextKeyboardCollection: [UIButton]!
     @IBOutlet var returnCollection:       [UIButton]!
+    @IBOutlet var settingsCollection:     [UIButton]!
+    @IBOutlet var shiftCollection:        [UIButton]!
     @IBOutlet var spacebarCollection:     [UIButton]!
     
     @IBOutlet var boardBackground:  UIView!
-    @IBOutlet weak var shiftButton: UIButton!
     @IBOutlet weak var numAlphaKey: UIButton!
-
-    @IBOutlet weak var settingsButton: UIButton!
     
     let colorDictionary = KeycapColors.getDictionary()
     var capsLockOn      = false
@@ -33,6 +32,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     var defaultKeysOn   = true
     
     @IBOutlet weak var numbersPage: UIStackView!
+    @IBOutlet weak var betaPage: UIStackView!
     @IBOutlet weak var alphaPage: UIStackView!
     
     override func updateViewConstraints() {
@@ -46,9 +46,8 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
 
         // Perform custom UI setup here
 
-        shiftButton.setTitle("\u{2b06}", for: .normal)
-        settingsButton.setTitle("\u{2699}", for: .normal)
-        
+        for shiftButton in shiftCollection { shiftButton.setTitle("\u{2b06}", for: .normal) }
+        for settingButton in settingsCollection { settingButton.setTitle("\u{2699}", for: .normal) }
         for returnButton in returnCollection { returnButton.setTitle("\u{21B5}", for: .normal) }
         for backspaceButton in backspaceCollection { backspaceButton.setTitle("\u{232B}", for: .normal) }
         
@@ -76,9 +75,9 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
             (textDocumentProxy as UIKeyInput).insertText("\(string!.uppercased())")
 
             shiftOn = false
-            
-            changeCaps(buttons: buttonCollection)
-            updateShift(button: shiftButton)
+            toggleAlphaBetaBoards()
+
+            for shiftButton in shiftCollection { updateShift(button: shiftButton) }
         } else {
             (textDocumentProxy as UIKeyInput).insertText("\(string!.lowercased())")
         }
@@ -99,40 +98,19 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         (textDocumentProxy as UIKeyInput).insertText("\n")
     }
     
-    @IBAction func shiftPressed(button: UIButton) {
-        
-        shiftOn = !shiftOn
-        
-        changeCaps(buttons: buttonCollection)
-        updateShift(button: shiftButton)
-    }
-    
-    func changeCaps(buttons:  [UIButton]!) {
-        for button in buttonCollection {
-            let buttonTitle = button.titleLabel!.text
-            if capsLockOn || shiftOn {
-                let text = buttonTitle!.uppercased()
-                button.setTitle("\(text)", for: .normal)
-            } else {
-                let text = buttonTitle!.lowercased()
-                button.setTitle("\(text)", for: .normal)
-            }
-        }
-    }
-    
     func updateShift(button: UIButton) -> Void {
         if shiftOn {
-            shiftButton.setTitle("\u{2b06}", for: .normal)
+            for shiftButton in shiftCollection { shiftButton.setTitle("\u{2b06}", for: .normal) }
         } else {
-            shiftButton.setTitle("\u{21e7}", for: .normal)
+            for shiftButton in shiftCollection { shiftButton.setTitle("\u{21e7}", for: .normal) }
         }
     }
     
     func checkForNoPrecedingText() {
         guard let documentContext = self.textDocumentProxy.documentContextBeforeInput  else {
             shiftOn = true
-            changeCaps(buttons: buttonCollection)
-            updateShift(button: shiftButton)
+            toggleAlphaBetaBoards()
+            for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             return
         }
         
@@ -144,8 +122,8 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
             switch String(precedingContext.characters.suffix(2)) {
             case ". ", "? ", "! ":
                 shiftOn = true
-                changeCaps(buttons: buttonCollection)
-                updateShift(button: shiftButton)
+                toggleAlphaBetaBoards()
+                for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             default:
                 print("")
             }
@@ -159,8 +137,8 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
                 (textDocumentProxy as UIKeyInput).insertText(".")
                 
                 shiftOn = true
-                changeCaps(buttons: buttonCollection)
-                updateShift(button: shiftButton)
+                toggleAlphaBetaBoards()
+                for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             }
         }
         
@@ -188,18 +166,39 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     }
     
     @IBAction func showAlphaKeyboard(_ sender: UIButton) {
-        numbersPage.isHidden = true
-        alphaPage.isHidden   = false
+        toggleAlphaBetaBoards()
     }
     
     @IBAction func showNumbersKeyboard(_ sender: UIButton) {
         numbersPage.isHidden = false
         alphaPage.isHidden   = true
+        betaPage.isHidden    = true
     }
     
     @IBAction func showSpecialCharacterKeyboard(_ sender: UIButton) {
-        numbersPage.isHidden = false
-        alphaPage.isHidden   = false
+        numbersPage.isHidden = true
+        alphaPage.isHidden   = true
+        betaPage.isHidden    = true
+    }
+    
+    func toggleAlphaBetaBoards() {
+        if shiftOn {
+            numbersPage.isHidden = true
+            alphaPage.isHidden   = false
+            betaPage.isHidden    = true
+        } else {
+            numbersPage.isHidden = true
+            alphaPage.isHidden   = true
+            betaPage.isHidden    = false
+        }
+    }
+    
+    @IBAction func shiftPressed(button: UIButton) {
+        shiftOn = !shiftOn
+        
+        toggleAlphaBetaBoards()
+        
+        for shiftButton in shiftCollection { updateShift(button: shiftButton) }
     }
     
     override func didReceiveMemoryWarning() {
