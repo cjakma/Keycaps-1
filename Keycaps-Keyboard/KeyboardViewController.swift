@@ -61,6 +61,13 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         styleAllButtons()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        checkForPunctuation()
+        checkForNoPrecedingText()
+    }
+    
     func dismissViewControllerAndReloadKeyboard() {
         styleAllButtons()
         self.dismiss(animated: false, completion: nil)
@@ -160,12 +167,14 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         if let precedingContext: String = self.textDocumentProxy.documentContextBeforeInput {
             
             switch String(precedingContext.characters.suffix(2)) {
-            case ". ", "? ", "! ":
+            case ". ", ", ", "? ", "! ":
                 shiftOn = true
                 toggleAlphaBetaBoards()
                 for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             default:
-                print("")
+                shiftOn = false
+                toggleAlphaBetaBoards()
+                for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             }
         }
     }
