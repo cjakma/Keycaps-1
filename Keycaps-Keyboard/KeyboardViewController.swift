@@ -14,32 +14,27 @@ protocol DismissViewControllerProtocol {
 
 class KeyboardViewController: UIInputViewController, DismissViewControllerProtocol {
 
-    @IBOutlet var buttonCollection:        [UIButton]!
-    @IBOutlet var modifierCollection:      [UIButton]!
-    @IBOutlet var boardBackground:         UIView!
-    @IBOutlet weak var spacebarButton:     UIButton!
-    @IBOutlet weak var shiftButton:        UIButton!
-    @IBOutlet weak var numAlphaKey:        UIButton!
-    @IBOutlet weak var backspaceButton:    UIButton!
-    @IBOutlet weak var returnButton:       UIButton!
-    @IBOutlet weak var settingsButton:     UIButton!
-    @IBOutlet weak var nextKeyboardButton: UIButton!
-    @IBOutlet weak var mButton: UIButton!
+    @IBOutlet var backspaceCollection:    [UIButton]!
+    @IBOutlet var buttonCollection:       [UIButton]!
+    @IBOutlet var modifierCollection:     [UIButton]!
+    @IBOutlet var nextKeyboardCollection: [UIButton]!
+    @IBOutlet var returnCollection:       [UIButton]!
+    @IBOutlet var settingsCollection:     [UIButton]!
+    @IBOutlet var shiftCollection:        [UIButton]!
+    @IBOutlet var spacebarCollection:     [UIButton]!
+    
+    @IBOutlet var boardBackground:  UIView!
+    @IBOutlet weak var numAlphaKey: UIButton!
     
     let colorDictionary = KeycapColors.getDictionary()
     var capsLockOn      = false
     var shiftOn         = true
     var defaultKeysOn   = true
     
-    let defaultKeys = ["0": "q", "1": "w", "2": "e", "3": "r", "4": "t", "5": "y",
-                       "6": "u", "7": "i", "8": "o", "9": "p", "10": "a", "11": "s", "12": "d", "13": "f",
-                       "14": "g", "15": "h", "16": "j", "17": "k", "18": "l", "19": "z", "20": "x", "21": "c",
-                       "22": "v", "23": "b", "24": "n", "25": "m"]
-    
-    let numberKeys = ["0": "1", "1": "2", "2": "3", "3": "4", "4": "5", "5": "6", "6": "7", "7": "8",
-                      "8": "9", "9": "0", "10": "-", "11": "/", "12": ":", "13": ";", "14": "(",
-                      "15": ")", "16": "$", "17": "&", "18": "@", "19": "\"", "20": ".", "21": ",",
-                      "22": "?", "23": "!", "24": "‘"]
+    @IBOutlet weak var specialCharacterPage: UIStackView!
+    @IBOutlet weak var numbersPage: UIStackView!
+    @IBOutlet weak var betaPage: UIStackView!
+    @IBOutlet weak var alphaPage: UIStackView!
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -52,17 +47,25 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
 
         // Perform custom UI setup here
 
-        nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
-
-        nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-
-        shiftButton.setTitle("\u{2b06}", for: .normal)
-        returnButton.setTitle("\u{21B5}", for: .normal)
-        settingsButton.setTitle("\u{2699}", for: .normal)
-        backspaceButton.setTitle("\u{232B}", for: .normal)
-        nextKeyboardButton.setTitle("\u{1F310}", for: .normal)
+        for shiftButton in shiftCollection { shiftButton.setTitle("\u{2b06}", for: .normal) }
+        for settingButton in settingsCollection { settingButton.setTitle("\u{2699}", for: .normal) }
+        for returnButton in returnCollection { returnButton.setTitle("\u{21B5}", for: .normal) }
+        for backspaceButton in backspaceCollection { backspaceButton.setTitle("\u{232B}", for: .normal) }
+        
+        for nextButton in nextKeyboardCollection {
+            nextButton.setTitle("\u{1F310}", for: .normal)
+            nextButton.translatesAutoresizingMaskIntoConstraints = false
+            nextButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        }
 
         styleAllButtons()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        checkForPunctuation()
+        checkForNoPrecedingText()
     }
     
     func dismissViewControllerAndReloadKeyboard() {
@@ -80,9 +83,8 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
             (textDocumentProxy as UIKeyInput).insertText("\(string!.uppercased())")
 
             shiftOn = false
-            
-            changeCaps(buttons: buttonCollection)
-            updateShift(button: shiftButton)
+
+            for shiftButton in shiftCollection { updateShift(button: shiftButton) }
         } else {
             (textDocumentProxy as UIKeyInput).insertText("\(string!.lowercased())")
         }
@@ -103,40 +105,59 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         (textDocumentProxy as UIKeyInput).insertText("\n")
     }
     
-    @IBAction func shiftPressed(button: UIButton) {
-        
-        shiftOn = !shiftOn
-        
-        changeCaps(buttons: buttonCollection)
-        updateShift(button: shiftButton)
+    @IBAction func showAlphaKeyboard(_ sender: UIButton) {
+        toggleAlphaBetaBoards()
     }
     
-    func changeCaps(buttons:  [UIButton]!) {
-        for button in buttonCollection {
-            let buttonTitle = button.titleLabel!.text
-            if capsLockOn || shiftOn {
-                let text = buttonTitle!.uppercased()
-                button.setTitle("\(text)", for: .normal)
-            } else {
-                let text = buttonTitle!.lowercased()
-                button.setTitle("\(text)", for: .normal)
-            }
+    @IBAction func showNumbersKeyboard(_ sender: UIButton) {
+        numbersPage.isHidden = false
+        alphaPage.isHidden   = true
+        betaPage.isHidden    = true
+        specialCharacterPage.isHidden = true
+    }
+    
+    @IBAction func showSpecialCharacterKeyboard(_ sender: UIButton) {
+        numbersPage.isHidden = true
+        alphaPage.isHidden   = true
+        betaPage.isHidden    = true
+        specialCharacterPage.isHidden = false
+    }
+    
+    func toggleAlphaBetaBoards() {
+        if shiftOn {
+            numbersPage.isHidden = true
+            alphaPage.isHidden   = false
+            betaPage.isHidden    = true
+            specialCharacterPage.isHidden = true
+        } else {
+            numbersPage.isHidden = true
+            alphaPage.isHidden   = true
+            betaPage.isHidden    = false
+            specialCharacterPage.isHidden = true
         }
     }
     
+    @IBAction func shiftPressed(button: UIButton) {
+        shiftOn = !shiftOn
+        
+        toggleAlphaBetaBoards()
+        
+        for shiftButton in shiftCollection { updateShift(button: shiftButton) }
+    }
+    
+    
     func updateShift(button: UIButton) -> Void {
         if shiftOn {
-            shiftButton.setTitle("\u{2b06}", for: .normal)
+            for shiftButton in shiftCollection { shiftButton.setTitle("\u{2b06}", for: .normal) }
         } else {
-            shiftButton.setTitle("\u{21e7}", for: .normal)
+            for shiftButton in shiftCollection { shiftButton.setTitle("\u{21e7}", for: .normal) }
         }
     }
     
     func checkForNoPrecedingText() {
         guard let documentContext = self.textDocumentProxy.documentContextBeforeInput  else {
             shiftOn = true
-            changeCaps(buttons: buttonCollection)
-            updateShift(button: shiftButton)
+            for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             return
         }
         
@@ -146,12 +167,14 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         if let precedingContext: String = self.textDocumentProxy.documentContextBeforeInput {
             
             switch String(precedingContext.characters.suffix(2)) {
-            case ". ", "? ", "! ":
+            case ". ", ", ", "? ", "! ":
                 shiftOn = true
-                changeCaps(buttons: buttonCollection)
-                updateShift(button: shiftButton)
+                toggleAlphaBetaBoards()
+                for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             default:
-                print("")
+                shiftOn = false
+                toggleAlphaBetaBoards()
+                for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             }
         }
     }
@@ -163,13 +186,12 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
                 (textDocumentProxy as UIKeyInput).insertText(".")
                 
                 shiftOn = true
-                changeCaps(buttons: buttonCollection)
-                updateShift(button: shiftButton)
+                toggleAlphaBetaBoards()
+                for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             }
         }
         
     }
-    
     
     ////
     // Styling
@@ -182,51 +204,13 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         
         for button in modifierCollection { styleModifiers(for: button) }
 
-        let allButtons: [UIButton] = buttonCollection + modifierCollection
+        var allButtons: [UIButton] = buttonCollection + modifierCollection
+        allButtons = allButtons + spacebarCollection
+        
         for button in allButtons { styleBorders(for: button) }
 
         styleBackground()
         styleSpacebar()
-    }
-    
-    @IBAction func switchKeys(_ sender: UIButton) {
-        
-        if defaultKeysOn {
-            for (index, button) in buttonCollection.enumerated() {
-               let keyCharacter = numberKeys["\(index)"]
-                button.setTitle(keyCharacter, for: .normal)
-            }
-            
-            for button in [shiftButton, mButton] {
-                button?.isEnabled = false
-
-                button?.backgroundColor = UIColor.clear
-                button?.setTitleColor(UIColor.clear, for: .normal)
-                button?.layer.borderColor = UIColor.clear.cgColor
-            }
-            
-            numAlphaKey.setTitle("abc", for: .normal)
-        } else {
-            for (index, button) in buttonCollection.enumerated() {
-                let keyCharacter = defaultKeys["\(index)"]
-                if capsLockOn || shiftOn {
-                    button.setTitle(keyCharacter?.uppercased(), for: .normal)
-                } else {
-                    button.setTitle(keyCharacter?.lowercased(), for: .normal)
-                }
-            }
-            
-            for button in [shiftButton, mButton] {
-                button?.isEnabled = true
-                styleLegendColor(for: button!)
-                styleModifiers(for: button!)
-                styleBorderColor(for: button!)
-            }
-            
-            numAlphaKey.setTitle("123", for: .normal)
-        }
-        
-        defaultKeysOn = !defaultKeysOn
     }
     
     override func didReceiveMemoryWarning() {
@@ -273,9 +257,11 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     }
     
     func styleSpacebar() -> Void {
-        styleLegendColor(for: spacebarButton)
-        styleSpacebarKeycapColor()
-        styleSpacebarText()
+        for button in spacebarCollection {
+            styleLegendColor(for: button)
+            styleSpacebarKeycapColor(for: button)
+            styleSpacebarText(for: button)
+        }
     }
     
     func styleBackground() {
@@ -345,22 +331,22 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         }
     }
     
-    func styleSpacebarKeycapColor() {
+    func styleSpacebarKeycapColor(for spacebar: UIButton) {
         if let colorString = KeycapSettings.getSpaceBarColor() as? String {
-            spacebarButton.backgroundColor = colorDictionary[colorString]
+            spacebar.backgroundColor = colorDictionary[colorString]
         } else {
-            spacebarButton.backgroundColor = UIColor.darkGray
+            spacebar.backgroundColor = UIColor.darkGray
         }
     }
     
-    func styleSpacebarText() {
+    func styleSpacebarText(for spacebar: UIButton) {
         if let spacebarText = KeycapSettings.getShowSpaceBarText() as? Int {
-            spacebarButton.setTitle("space", for: .normal)
+            spacebar.setTitle("space", for: .normal)
             if spacebarText == 0 {
-                spacebarButton.setTitleColor(.clear, for: .normal)
+                spacebar.setTitleColor(.clear, for: .normal)
             } else {
                 if let colorString = KeycapSettings.getLegendColor() as? String {
-                    spacebarButton.setTitleColor(colorDictionary[colorString], for: .normal)
+                    spacebar.setTitleColor(colorDictionary[colorString], for: .normal)
                 }
             }
         }
