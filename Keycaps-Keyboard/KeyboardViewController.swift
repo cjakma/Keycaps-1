@@ -98,6 +98,43 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         (textDocumentProxy as UIKeyInput).insertText("\n")
     }
     
+    @IBAction func showAlphaKeyboard(_ sender: UIButton) {
+        toggleAlphaBetaBoards()
+    }
+    
+    @IBAction func showNumbersKeyboard(_ sender: UIButton) {
+        numbersPage.isHidden = false
+        alphaPage.isHidden   = true
+        betaPage.isHidden    = true
+    }
+    
+    @IBAction func showSpecialCharacterKeyboard(_ sender: UIButton) {
+        numbersPage.isHidden = true
+        alphaPage.isHidden   = true
+        betaPage.isHidden    = true
+    }
+    
+    func toggleAlphaBetaBoards() {
+        if shiftOn {
+            numbersPage.isHidden = true
+            alphaPage.isHidden   = false
+            betaPage.isHidden    = true
+        } else {
+            numbersPage.isHidden = true
+            alphaPage.isHidden   = true
+            betaPage.isHidden    = false
+        }
+    }
+    
+    @IBAction func shiftPressed(button: UIButton) {
+        shiftOn = !shiftOn
+        
+        toggleAlphaBetaBoards()
+        
+        for shiftButton in shiftCollection { updateShift(button: shiftButton) }
+    }
+    
+    
     func updateShift(button: UIButton) -> Void {
         if shiftOn {
             for shiftButton in shiftCollection { shiftButton.setTitle("\u{2b06}", for: .normal) }
@@ -144,7 +181,6 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         
     }
     
-    
     ////
     // Styling
     ///
@@ -163,42 +199,6 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
 
         styleBackground()
         styleSpacebar()
-    }
-    
-    @IBAction func showAlphaKeyboard(_ sender: UIButton) {
-        toggleAlphaBetaBoards()
-    }
-    
-    @IBAction func showNumbersKeyboard(_ sender: UIButton) {
-        numbersPage.isHidden = false
-        alphaPage.isHidden   = true
-        betaPage.isHidden    = true
-    }
-    
-    @IBAction func showSpecialCharacterKeyboard(_ sender: UIButton) {
-        numbersPage.isHidden = true
-        alphaPage.isHidden   = true
-        betaPage.isHidden    = true
-    }
-    
-    func toggleAlphaBetaBoards() {
-        if shiftOn {
-            numbersPage.isHidden = true
-            alphaPage.isHidden   = false
-            betaPage.isHidden    = true
-        } else {
-            numbersPage.isHidden = true
-            alphaPage.isHidden   = true
-            betaPage.isHidden    = false
-        }
-    }
-    
-    @IBAction func shiftPressed(button: UIButton) {
-        shiftOn = !shiftOn
-        
-        toggleAlphaBetaBoards()
-        
-        for shiftButton in shiftCollection { updateShift(button: shiftButton) }
     }
     
     override func didReceiveMemoryWarning() {
