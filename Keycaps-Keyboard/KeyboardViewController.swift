@@ -31,6 +31,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     var shiftOn         = true
     var defaultKeysOn   = true
     
+    @IBOutlet weak var specialCharacterPage: UIStackView!
     @IBOutlet weak var numbersPage: UIStackView!
     @IBOutlet weak var betaPage: UIStackView!
     @IBOutlet weak var alphaPage: UIStackView!
@@ -106,12 +107,14 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         numbersPage.isHidden = false
         alphaPage.isHidden   = true
         betaPage.isHidden    = true
+        specialCharacterPage.isHidden = true
     }
     
     @IBAction func showSpecialCharacterKeyboard(_ sender: UIButton) {
         numbersPage.isHidden = true
         alphaPage.isHidden   = true
         betaPage.isHidden    = true
+        specialCharacterPage.isHidden = false
     }
     
     func toggleAlphaBetaBoards() {
@@ -119,10 +122,12 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
             numbersPage.isHidden = true
             alphaPage.isHidden   = false
             betaPage.isHidden    = true
+            specialCharacterPage.isHidden = true
         } else {
             numbersPage.isHidden = true
             alphaPage.isHidden   = true
             betaPage.isHidden    = false
+            specialCharacterPage.isHidden = true
         }
     }
     
