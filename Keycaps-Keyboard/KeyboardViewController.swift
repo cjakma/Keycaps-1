@@ -83,7 +83,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
             (textDocumentProxy as UIKeyInput).insertText("\(string!.uppercased())")
 
             shiftOn = false
-
+            toggleAlphaBetaBoards()
             for shiftButton in shiftCollection { updateShift(button: shiftButton) }
         } else {
             (textDocumentProxy as UIKeyInput).insertText("\(string!.lowercased())")
@@ -157,6 +157,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     func checkForNoPrecedingText() {
         guard let documentContext = self.textDocumentProxy.documentContextBeforeInput  else {
             shiftOn = true
+            toggleAlphaBetaBoards()
             for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             return
         }
@@ -167,7 +168,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         if let precedingContext: String = self.textDocumentProxy.documentContextBeforeInput {
             
             switch String(precedingContext.characters.suffix(2)) {
-            case ". ", ", ", "? ", "! ":
+            case ". ", "? ", "! ":
                 shiftOn = true
                 toggleAlphaBetaBoards()
                 for shiftButton in shiftCollection { updateShift(button: shiftButton) }
