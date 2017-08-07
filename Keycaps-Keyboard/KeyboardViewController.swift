@@ -67,6 +67,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         }
 
         styleAllButtons()
+        updateHeightIfPlusSize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,7 +107,14 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
                 // No constraints just default
                 ////
                 
+                self.updateHeightIfPlusSize()
             }
+        }
+    }
+    
+    func updateHeightIfPlusSize() {
+        if UIDevice.current.userInterfaceIdiom == .phone && UIScreen.main.bounds.size.height == 736.0 {
+            self.fixConstraint(236)
         }
     }
     
