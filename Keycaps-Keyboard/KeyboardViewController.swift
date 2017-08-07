@@ -83,7 +83,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
             (textDocumentProxy as UIKeyInput).insertText("\(string!.uppercased())")
 
             shiftOn = false
-            toggleAlphaBetaBoards()
+            if alphaPage.isHidden == false { toggleAlphaBetaBoards() }
             for shiftButton in shiftCollection { updateShift(button: shiftButton) }
         } else {
             (textDocumentProxy as UIKeyInput).insertText("\(string!.lowercased())")
