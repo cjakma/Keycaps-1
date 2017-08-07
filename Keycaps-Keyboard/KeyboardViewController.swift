@@ -31,6 +31,14 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     var shiftOn         = true
     var defaultKeysOn   = true
     
+    var heightConstraint: (Any)? = nil
+    var alphaPageConstraint: (Any)? = nil
+    var betaPageConstraint: (Any)? = nil
+    var numbersPageConstraint: (Any)? = nil
+    var specialCharacterPageConstraint: (Any)? = nil
+
+    
+    @IBOutlet var pageCollection: [UIStackView]!
     @IBOutlet weak var specialCharacterPage: UIStackView!
     @IBOutlet weak var numbersPage: UIStackView!
     @IBOutlet weak var betaPage: UIStackView!
@@ -71,6 +79,60 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     func dismissViewControllerAndReloadKeyboard() {
         styleAllButtons()
         self.dismiss(animated: false, completion: nil)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate(alongsideTransition: nil) { _ in
+            self.updateViewConstraints()
+            
+            self.checkHeightConstraint()
+            
+            var height: CGFloat
+            
+            if UIScreen.main.bounds.size.height < UIScreen.main.bounds.size.width {
+                //Keyboard is in Landscape
+                
+                height = 170
+                self.fixConstraint(height)
+                
+                for page in self.pageCollection { page.layoutIfNeeded() }
+                
+            } else {
+                //Keyboard is in Portrait
+                
+                ////
+                // No constraints just default
+                ////
+                
+            }
+        }
+    }
+    
+    func fixConstraint(_ height: CGFloat) {
+        self.heightConstraint = self.getHeightConstraint(height, self.view)
+        self.view.addConstraint(self.heightConstraint as! NSLayoutConstraint)
+        self.view.layoutIfNeeded()
+    }
+    
+    func checkHeightConstraint() {
+        if let constraint: NSLayoutConstraint = self.heightConstraint as? NSLayoutConstraint {
+            self.view.removeConstraint(constraint)
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func getHeightConstraint(_ height: CGFloat, _ view: UIView) -> NSLayoutConstraint {
+        return NSLayoutConstraint.init(
+            item: view,
+            attribute: .height,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: 0.0,
+            constant: height
+        )
     }
     
     ////
