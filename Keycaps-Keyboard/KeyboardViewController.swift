@@ -228,17 +228,8 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         
+        checkForPunctuation()
         checkForNoPrecedingText()
-        
-//        var textColor: UIColor
-//        let proxy = self.textDocumentProxy
-//        
-//        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
-//            textColor = UIColor.white
-//        } else {
-//            textColor = UIColor.black
-//        }
-        
     }
     
     func styleBorders(for button: UIButton) -> Void {
