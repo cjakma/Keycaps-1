@@ -23,16 +23,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Keycaps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcc-Ri-pYs">
-                                <rect key="frame" x="135" y="121" width="104" height="25"/>
+                                <rect key="frame" x="135" y="77" width="104" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="eFR-xj-e3Z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vXZ-f0-RlR">
-                                <rect key="frame" x="16" y="163" width="343" height="341"/>
+                                <rect key="frame" x="16" y="119" width="343" height="429"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go to Settings &gt; General " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeZ-KL-e9R">
                                         <rect key="frame" x="75" y="0.0" width="193" height="20"/>
@@ -53,15 +52,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_keyboard" translatesAutoresizingMaskIntoConstraints="NO" id="J5w-cC-DQW">
-                                        <rect key="frame" x="0.0" y="50" width="343" height="105"/>
+                                        <rect key="frame" x="0.0" y="50" width="343" height="132.5"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_keycaps" translatesAutoresizingMaskIntoConstraints="NO" id="ubp-kn-0fL">
-                                        <rect key="frame" x="0.0" y="160" width="343" height="181"/>
+                                        <rect key="frame" x="0.0" y="187.5" width="343" height="241.5"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.3529411764705882" green="0.3529411764705882" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.82745098039215681" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="vXZ-f0-RlR" firstAttribute="top" secondItem="WgC-80-2Oq" secondAttribute="bottom" constant="99" id="24I-LM-pG7"/>
                             <constraint firstItem="vXZ-f0-RlR" firstAttribute="centerX" secondItem="a2t-83-T1D" secondAttribute="centerX" id="57Y-xj-9tf"/>
@@ -73,7 +72,7 @@
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
