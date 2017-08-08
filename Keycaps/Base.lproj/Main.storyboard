@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -27,90 +26,98 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Keycaps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcc-Ri-pYs">
-                                <rect key="frame" x="135" y="40" width="104" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="42N-Up-VJc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vXZ-f0-RlR">
-                                <rect key="frame" x="16" y="82" width="343" height="300"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Alt-br-VYV">
+                                <rect key="frame" x="38" y="96" width="298.5" height="474.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7wG-P6-cO5">
-                                        <rect key="frame" x="31.5" y="0.0" width="280.5" height="40"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go to Settings &gt; General &gt; Keyboard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2b9-4E-H6p">
-                                                <rect key="frame" x="0.0" y="0.0" width="280.5" height="20"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="0dw-Lj-9sg"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt; Keyboards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeZ-KL-e9R">
-                                                <rect key="frame" x="0.0" y="20" width="280.5" height="20"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="nmr-9m-bRJ"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_keyboard" translatesAutoresizingMaskIntoConstraints="NO" id="J5w-cC-DQW">
-                                        <rect key="frame" x="0.0" y="45" width="343" height="100"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Keycaps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcc-Ri-pYs">
+                                        <rect key="frame" x="0.0" y="0.0" width="298.5" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="GFG-Sg-0pw"/>
+                                            <constraint firstAttribute="height" constant="60" id="42N-Up-VJc"/>
                                         </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_keycaps" translatesAutoresizingMaskIntoConstraints="NO" id="JUl-hs-YQj">
-                                        <rect key="frame" x="0.0" y="150" width="343" height="150"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="m9w-I5-IUD"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQM-BU-37i">
-                                <rect key="frame" x="154" y="416" width="67" height="20.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-4" translatesAutoresizingMaskIntoConstraints="NO" id="Nrx-fd-XCN">
-                                <rect key="frame" x="38.5" y="453.5" width="298" height="54.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When using the Keycaps keyboard, tap " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOY-ss-Ekh">
-                                        <rect key="frame" x="0.0" y="0.0" width="298" height="20.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="298" id="lel-hL-5xc"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpC-KT-vNj">
-                                        <rect key="frame" x="0.0" y="16.5" width="298" height="38"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vXZ-f0-RlR">
+                                        <rect key="frame" x="0.0" y="60" width="298.5" height="300"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⚙" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsK-5l-0oO">
-                                                <rect key="frame" x="0.0" y="0.0" width="27" height="38"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7wG-P6-cO5">
+                                                <rect key="frame" x="9" y="0.0" width="280.5" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go to Settings &gt; General &gt; Keyboard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2b9-4E-H6p">
+                                                        <rect key="frame" x="0.0" y="0.0" width="280.5" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="0dw-Lj-9sg"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt; Keyboards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeZ-KL-e9R">
+                                                        <rect key="frame" x="0.0" y="20" width="280.5" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="nmr-9m-bRJ"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_keyboard" translatesAutoresizingMaskIntoConstraints="NO" id="J5w-cC-DQW">
+                                                <rect key="frame" x="0.0" y="45" width="298.5" height="100"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="27" id="ThG-Y8-STY"/>
+                                                    <constraint firstAttribute="height" constant="100" id="GFG-Sg-0pw"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Quivira" family="Quivira" pointSize="32"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to adjust colors and settings." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMa-O2-imC">
-                                                <rect key="frame" x="27" y="0.0" width="271" height="38"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_keycaps" translatesAutoresizingMaskIntoConstraints="NO" id="JUl-hs-YQj">
+                                                <rect key="frame" x="0.0" y="150" width="298.5" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="m9w-I5-IUD"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQM-BU-37i">
+                                        <rect key="frame" x="0.0" y="360" width="298.5" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="dBi-Wx-Nij"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-4" translatesAutoresizingMaskIntoConstraints="NO" id="Nrx-fd-XCN">
+                                        <rect key="frame" x="0.0" y="420" width="298.5" height="54.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When using the Keycaps keyboard, tap " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOY-ss-Ekh">
+                                                <rect key="frame" x="0.0" y="0.0" width="298.5" height="20.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="298" id="lel-hL-5xc"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpC-KT-vNj">
+                                                <rect key="frame" x="0.0" y="16.5" width="298.5" height="38"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⚙" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsK-5l-0oO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="27.5" height="38"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="27" id="ThG-Y8-STY"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Quivira" family="Quivira" pointSize="32"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to adjust colors and settings." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMa-O2-imC">
+                                                        <rect key="frame" x="27.5" y="0.0" width="271" height="38"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -118,15 +125,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.82745098039215681" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Nrx-fd-XCN" firstAttribute="centerX" secondItem="a2t-83-T1D" secondAttribute="centerX" id="27v-zd-zAB"/>
-                            <constraint firstItem="vXZ-f0-RlR" firstAttribute="top" secondItem="Lcc-Ri-pYs" secondAttribute="bottom" constant="17" id="ERC-Er-oOH"/>
-                            <constraint firstItem="IQM-BU-37i" firstAttribute="top" secondItem="vXZ-f0-RlR" secondAttribute="bottom" constant="34" id="MKI-cg-qgP"/>
-                            <constraint firstItem="vXZ-f0-RlR" firstAttribute="trailing" secondItem="a2t-83-T1D" secondAttribute="trailingMargin" id="YVd-18-95t"/>
-                            <constraint firstItem="IQM-BU-37i" firstAttribute="centerX" secondItem="a2t-83-T1D" secondAttribute="centerX" id="okr-Uf-mQR"/>
-                            <constraint firstItem="Lcc-Ri-pYs" firstAttribute="centerX" secondItem="vXZ-f0-RlR" secondAttribute="centerX" id="qIi-bG-lqE"/>
-                            <constraint firstItem="Lcc-Ri-pYs" firstAttribute="top" secondItem="WgC-80-2Oq" secondAttribute="bottom" constant="20" id="wBn-TS-B60"/>
-                            <constraint firstItem="Nrx-fd-XCN" firstAttribute="top" secondItem="IQM-BU-37i" secondAttribute="bottom" constant="17" id="x75-Up-C5a"/>
-                            <constraint firstItem="vXZ-f0-RlR" firstAttribute="leading" secondItem="a2t-83-T1D" secondAttribute="leadingMargin" id="zRa-rt-ZIV"/>
+                            <constraint firstItem="Alt-br-VYV" firstAttribute="centerX" secondItem="a2t-83-T1D" secondAttribute="centerX" id="2Ok-oB-WBG"/>
+                            <constraint firstItem="Alt-br-VYV" firstAttribute="centerY" secondItem="a2t-83-T1D" secondAttribute="centerY" id="HoE-Mc-bjD"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
