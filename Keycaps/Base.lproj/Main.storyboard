@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pVd-g3-Se6">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pVd-g3-Se6">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +21,56 @@
                     <view key="view" contentMode="scaleToFill" id="a2t-83-T1D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Keycaps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcc-Ri-pYs">
+                                <rect key="frame" x="135" y="121" width="104" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="eFR-xj-e3Z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vXZ-f0-RlR">
+                                <rect key="frame" x="16" y="163" width="343" height="341"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go to Settings &gt; General " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeZ-KL-e9R">
+                                        <rect key="frame" x="75" y="0.0" width="193" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="n2D-g7-L5M"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt; Keyboard &gt; Keyboards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cW5-zF-o81">
+                                        <rect key="frame" x="77.5" y="25" width="188.5" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="Mhl-k4-gbr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_keyboard" translatesAutoresizingMaskIntoConstraints="NO" id="J5w-cC-DQW">
+                                        <rect key="frame" x="0.0" y="50" width="343" height="105"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_keycaps" translatesAutoresizingMaskIntoConstraints="NO" id="ubp-kn-0fL">
+                                        <rect key="frame" x="0.0" y="160" width="343" height="181"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="0.3529411764705882" green="0.3529411764705882" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="vXZ-f0-RlR" firstAttribute="top" secondItem="WgC-80-2Oq" secondAttribute="bottom" constant="99" id="24I-LM-pG7"/>
+                            <constraint firstItem="vXZ-f0-RlR" firstAttribute="centerX" secondItem="a2t-83-T1D" secondAttribute="centerX" id="57Y-xj-9tf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vXZ-f0-RlR" secondAttribute="trailing" id="Fxx-0t-926"/>
+                            <constraint firstItem="Lcc-Ri-pYs" firstAttribute="centerX" secondItem="a2t-83-T1D" secondAttribute="centerX" id="UsJ-M5-K1w"/>
+                            <constraint firstItem="vXZ-f0-RlR" firstAttribute="leading" secondItem="a2t-83-T1D" secondAttribute="leadingMargin" id="dDe-5M-ZhE"/>
+                            <constraint firstItem="vXZ-f0-RlR" firstAttribute="top" secondItem="Lcc-Ri-pYs" secondAttribute="bottom" constant="17" id="lDK-gz-zgz"/>
+                            <constraint firstItem="vXZ-f0-RlR" firstAttribute="centerY" secondItem="a2t-83-T1D" secondAttribute="centerY" id="qLv-ij-YfJ"/>
+                        </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
@@ -30,7 +80,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iec-Hx-kes" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="108" y="34.632683658170919"/>
+            <point key="canvasLocation" x="107.8125" y="34.33098591549296"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="add_keyboard" width="640" height="136"/>
+        <image name="add_keycaps" width="640" height="249"/>
+    </resources>
 </document>
