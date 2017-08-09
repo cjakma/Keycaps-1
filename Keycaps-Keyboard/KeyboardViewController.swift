@@ -225,7 +225,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     }
     
     func checkForNoPrecedingText() {
-        guard let documentContext = self.textDocumentProxy.documentContextBeforeInput  else {
+        guard (textDocumentProxy.documentContextBeforeInput) != nil  else {
             shiftOn = true
             toggleAlphaBetaBoards()
             for shiftButton in shiftCollection { updateShift(button: shiftButton) }
