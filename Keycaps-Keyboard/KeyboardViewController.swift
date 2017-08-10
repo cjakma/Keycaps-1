@@ -8,11 +8,7 @@
 
 import UIKit
 
-protocol DismissViewControllerProtocol {
-    func dismissViewControllerAndReloadKeyboard()
-}
-
-class KeyboardViewController: UIInputViewController, DismissViewControllerProtocol {
+class KeyboardViewController: UIInputViewController {
 
     @IBOutlet var backspaceCollection:    [UIButton]!
     @IBOutlet var buttonCollection:       [UIButton]!
@@ -426,6 +422,15 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
                     spacebar.setTitleColor(colorDictionary[colorString], for: .normal)
                 }
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextScene = segue.destination as? SettingsViewController {
+            let segueID = segue.identifier
+            let baseEncodedSegueID = segueID?.toBase64()
+            
+            nextScene.presentingVC = self
         }
     }
 
