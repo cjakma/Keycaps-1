@@ -158,6 +158,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         } else {
             (textDocumentProxy as UIKeyInput).insertText("\(string!.lowercased())")
         }
+        
     }
     
     @IBAction func backSpacePressed(button: UIButton) {
@@ -166,6 +167,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     }
     
     @IBAction func spacePressed(button: UIButton) {
+        checkForCapitalI()
         checkForQuickPeriod()
         (textDocumentProxy as UIKeyInput).insertText(" ")
         checkForPunctuation()
@@ -221,6 +223,19 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
             for shiftButton in shiftCollection { shiftButton.setTitle("\u{2b06}", for: .normal) }
         } else {
             for shiftButton in shiftCollection { shiftButton.setTitle("\u{21e7}", for: .normal) }
+        }
+    }
+    
+    func checkForCapitalI() {
+        if let precedingContext: String = self.textDocumentProxy.documentContextBeforeInput, String(precedingContext.characters.suffix(2)) == " i"  {
+            var i = 0
+            
+            while i < 2 {
+                (textDocumentProxy as UIKeyInput).deleteBackward()
+                i += 1
+            }
+            
+            (textDocumentProxy as UIKeyInput).insertText(" I")
         }
     }
     
