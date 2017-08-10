@@ -133,8 +133,8 @@
 			children = (
 				68B7C2861F27B620002CC5AA /* KeyboardViewController.swift */,
 				68D8FA101F2A3C5E00956CAD /* SettingsViewController.swift */,
-				68D8FA161F2A3FE500956CAD /* ViewController.swift */,
 				68E9A5701F2A9AFC0021E131 /* MoreSettingsTableViewController.swift */,
+				68D8FA161F2A3FE500956CAD /* ViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";

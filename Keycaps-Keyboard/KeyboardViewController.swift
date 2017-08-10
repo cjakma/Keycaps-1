@@ -8,11 +8,7 @@
 
 import UIKit
 
-protocol DismissViewControllerProtocol {
-    func dismissViewControllerAndReloadKeyboard()
-}
-
-class KeyboardViewController: UIInputViewController, DismissViewControllerProtocol {
+class KeyboardViewController: UIInputViewController {
 
     @IBOutlet var backspaceCollection:    [UIButton]!
     @IBOutlet var buttonCollection:       [UIButton]!
@@ -20,25 +16,29 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     @IBOutlet var nextKeyboardCollection: [UIButton]!
     @IBOutlet var returnCollection:       [UIButton]!
     @IBOutlet var settingsCollection:     [UIButton]!
-    @IBOutlet var shiftCollection:        [UIButton]!
     @IBOutlet var spacebarCollection:     [UIButton]!
     
     @IBOutlet var boardBackground:  UIView!
     @IBOutlet weak var numAlphaKey: UIButton!
+    @IBOutlet weak var webSearchShiftButton: UIButton!
+    @IBOutlet weak var betaShiftButton: UIButton!
+    @IBOutlet weak var alphaShiftButton: UIButton!
     
     let colorDictionary = KeycapColors.getDictionary()
     var capsLockOn      = false
     var shiftOn         = true
     var defaultKeysOn   = true
+    var webSearchKeyboard = false
     
     var heightConstraint: (Any)? = nil
     var alphaPageConstraint: (Any)? = nil
     var betaPageConstraint: (Any)? = nil
     var numbersPageConstraint: (Any)? = nil
     var specialCharacterPageConstraint: (Any)? = nil
-
     
     @IBOutlet var pageCollection: [UIStackView]!
+    
+    @IBOutlet weak var webSearchPage: UIStackView!
     @IBOutlet weak var specialCharacterPage: UIStackView!
     @IBOutlet weak var numbersPage: UIStackView!
     @IBOutlet weak var betaPage: UIStackView!
@@ -55,7 +55,9 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
 
         // Perform custom UI setup here
 
-        for shiftButton in shiftCollection { shiftButton.setTitle("\u{2b06}", for: .normal) }
+        alphaShiftButton.setTitle("\u{2b06}", for: .normal)
+        betaShiftButton.setTitle("\u{21e7}", for: .normal)
+        webSearchShiftButton.setTitle("\u{21e7}", for: .normal)
         for settingButton in settingsCollection { settingButton.setTitle("\u{2699}", for: .normal) }
         for returnButton in returnCollection { returnButton.setTitle("\u{21B5}", for: .normal) }
         for backspaceButton in backspaceCollection { backspaceButton.setTitle("\u{232B}", for: .normal) }
@@ -75,6 +77,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         
         checkForPunctuation()
         checkForNoPrecedingText()
+        checkKeyboardType()
     }
     
     func dismissViewControllerAndReloadKeyboard() {
@@ -143,6 +146,16 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         )
     }
     
+    func checkKeyboardType() {
+        if (textDocumentProxy as UITextDocumentProxy).keyboardType == UIKeyboardType.webSearch {
+            webSearchKeyboard = true
+            shiftOn = false
+            showWebSearchKeyboard()
+        } else {
+            webSearchKeyboard = false
+        }
+    }
+    
     ////
     // Typing
     ////
@@ -154,10 +167,10 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
 
             shiftOn = false
             if alphaPage.isHidden == false { toggleAlphaBetaBoards() }
-            for shiftButton in shiftCollection { updateShift(button: shiftButton) }
         } else {
             (textDocumentProxy as UIKeyInput).insertText("\(string!.lowercased())")
         }
+        
     }
     
     @IBAction func backSpacePressed(button: UIButton) {
@@ -166,6 +179,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     }
     
     @IBAction func spacePressed(button: UIButton) {
+        checkForCapitalI()
         checkForQuickPeriod()
         (textDocumentProxy as UIKeyInput).insertText(" ")
         checkForPunctuation()
@@ -184,6 +198,7 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         alphaPage.isHidden   = true
         betaPage.isHidden    = true
         specialCharacterPage.isHidden = true
+        webSearchPage.isHidden = true
     }
     
     @IBAction func showSpecialCharacterKeyboard(_ sender: UIButton) {
@@ -191,6 +206,15 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
         alphaPage.isHidden   = true
         betaPage.isHidden    = true
         specialCharacterPage.isHidden = false
+        webSearchPage.isHidden = true
+    }
+    
+    func showWebSearchKeyboard() {
+        numbersPage.isHidden = true
+        alphaPage.isHidden   = true
+        betaPage.isHidden    = true
+        specialCharacterPage.isHidden = true
+        webSearchPage.isHidden = false
     }
     
     func toggleAlphaBetaBoards() {
@@ -199,37 +223,43 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
             alphaPage.isHidden   = false
             betaPage.isHidden    = true
             specialCharacterPage.isHidden = true
+            webSearchPage.isHidden = true
         } else {
             numbersPage.isHidden = true
             alphaPage.isHidden   = true
             betaPage.isHidden    = false
             specialCharacterPage.isHidden = true
+            webSearchPage.isHidden = true
         }
     }
+    
     
     @IBAction func shiftPressed(button: UIButton) {
         shiftOn = !shiftOn
         
         toggleAlphaBetaBoards()
-        
-        for shiftButton in shiftCollection { updateShift(button: shiftButton) }
     }
     
-    
-    func updateShift(button: UIButton) -> Void {
-        if shiftOn {
-            for shiftButton in shiftCollection { shiftButton.setTitle("\u{2b06}", for: .normal) }
-        } else {
-            for shiftButton in shiftCollection { shiftButton.setTitle("\u{21e7}", for: .normal) }
+    func checkForCapitalI() {
+        if let precedingContext: String = self.textDocumentProxy.documentContextBeforeInput, String(precedingContext.characters.suffix(2)) == " i"  {
+            var i = 0
+            
+            while i < 2 {
+                (textDocumentProxy as UIKeyInput).deleteBackward()
+                i += 1
+            }
+            
+            (textDocumentProxy as UIKeyInput).insertText(" I")
         }
     }
     
     func checkForNoPrecedingText() {
-        guard let documentContext = self.textDocumentProxy.documentContextBeforeInput  else {
-            shiftOn = true
-            toggleAlphaBetaBoards()
-            for shiftButton in shiftCollection { updateShift(button: shiftButton) }
-            return
+        if !webSearchKeyboard {
+            guard (textDocumentProxy.documentContextBeforeInput) != nil  else {
+                shiftOn = true
+                toggleAlphaBetaBoards()
+                return
+            }
         }
         
     }
@@ -241,11 +271,9 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
             case ". ", "? ", "! ":
                 shiftOn = true
                 toggleAlphaBetaBoards()
-                for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             default:
                 shiftOn = false
                 toggleAlphaBetaBoards()
-                for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             }
         }
     }
@@ -258,7 +286,6 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
                 
                 shiftOn = true
                 toggleAlphaBetaBoards()
-                for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             }
         }
         
@@ -297,7 +324,6 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
     
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
-        
         checkForPunctuation()
         checkForNoPrecedingText()
     }
@@ -411,6 +437,15 @@ class KeyboardViewController: UIInputViewController, DismissViewControllerProtoc
                     spacebar.setTitleColor(colorDictionary[colorString], for: .normal)
                 }
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextScene = segue.destination as? SettingsViewController {
+            let segueID = segue.identifier
+            let baseEncodedSegueID = segueID?.toBase64()
+            
+            nextScene.presentingVC = self
         }
     }
 
