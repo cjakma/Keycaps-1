@@ -15,7 +15,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var pickerData:      [String]          = KeycapColors.getArray()
     let colorDictionary: [String: UIColor] = KeycapColors.getDictionary()
     
-    var data: Data?
+    var segueID: String?
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var colorBlock: UIView!
@@ -63,37 +63,37 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func autoSetPicker() {
         
-        let segueID = getSegueID(from: data!)
+        if (segueID != nil) {
         
-        switch segueID {
-        case "backgroundColor":
-            if let colorString = KeycapSettings.getBackgroundColor() as? String {
-                comparePickerData(to: colorString)
+            switch segueID! {
+            case "backgroundColor":
+                if let colorString = KeycapSettings.getBackgroundColor() as? String {
+                    comparePickerData(to: colorString)
+                }
+            case "buttonColor":
+                if let colorString = KeycapSettings.getKeycapColor() as? String {
+                    comparePickerData(to: colorString)
+                }
+            case "borderColor":
+                if let colorString = KeycapSettings.getBorderColor() as? String {
+                    comparePickerData(to: colorString)
+                }
+            case "letterColor":
+                if let colorString = KeycapSettings.getLegendColor() as? String {
+                    comparePickerData(to: colorString)
+                }
+            case "modiferColor":
+                if let colorString = KeycapSettings.getModifierColor() as? String {
+                    comparePickerData(to: colorString)
+                }
+            case "spacebarColor":
+                if let colorString = KeycapSettings.getSpaceBarColor() as? String {
+                    comparePickerData(to: colorString)
+                }
+            default:
+                print(segueID!)
             }
-        case "buttonColor":
-            if let colorString = KeycapSettings.getKeycapColor() as? String {
-                comparePickerData(to: colorString)
-            }
-        case "borderColor":
-            if let colorString = KeycapSettings.getBorderColor() as? String {
-                comparePickerData(to: colorString)
-            }
-        case "letterColor":
-            if let colorString = KeycapSettings.getLegendColor() as? String {
-                comparePickerData(to: colorString)
-            }
-        case "modiferColor":
-            if let colorString = KeycapSettings.getModifierColor() as? String {
-                comparePickerData(to: colorString)
-            }
-        case "spacebarColor":
-            if let colorString = KeycapSettings.getSpaceBarColor() as? String {
-                comparePickerData(to: colorString)
-            }
-        default:
-            print(segueID)
         }
-        
     }
     
     func comparePickerData(to colorString: String?) {
@@ -109,23 +109,24 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     func save(selected colorString: String) {
         
-        let segueID = getSegueID(from: data!)
+        if (segueID != nil) {
         
-        switch segueID {
-        case "backgroundColor":
-            KeycapSettings.setBackground(colorString: colorString)
-        case "buttonColor":
-            KeycapSettings.setKeycap(colorString: colorString)
-        case "borderColor":
-            KeycapSettings.setBorder(colorString: colorString)
-        case "letterColor":
-            KeycapSettings.setLegend(colorString: colorString)
-        case "modiferColor":
-            KeycapSettings.setModifier(colorString: colorString)
-        case "spacebarColor":
-            KeycapSettings.setSpacebar(colorString: colorString)
-        default:
-          print(segueID)
+            switch segueID! {
+            case "backgroundColor":
+                KeycapSettings.setBackground(colorString: colorString)
+            case "buttonColor":
+                KeycapSettings.setKeycap(colorString: colorString)
+            case "borderColor":
+                KeycapSettings.setBorder(colorString: colorString)
+            case "letterColor":
+                KeycapSettings.setLegend(colorString: colorString)
+            case "modiferColor":
+                KeycapSettings.setModifier(colorString: colorString)
+            case "spacebarColor":
+                KeycapSettings.setSpacebar(colorString: colorString)
+            default:
+              print(segueID!)
+            }
         }
         
     }

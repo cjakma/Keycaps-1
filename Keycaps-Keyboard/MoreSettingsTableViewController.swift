@@ -118,7 +118,7 @@ class MoreSettingsTableViewController: UITableViewController {
             let segueID = segue.identifier
             let baseEncodedSegueID = segueID?.toBase64()
 
-            nextScene.data = Data.init(base64Encoded: baseEncodedSegueID!)
+            nextScene.segueID = segueID
         }
     }
     
