@@ -20,6 +20,7 @@ class KeyboardViewController: UIInputViewController {
     
     @IBOutlet var boardBackground:  UIView!
     @IBOutlet weak var numAlphaKey: UIButton!
+    @IBOutlet weak var webSearchShiftButton: UIButton!
     @IBOutlet weak var betaShiftButton: UIButton!
     @IBOutlet weak var alphaShiftButton: UIButton!
     
@@ -27,6 +28,7 @@ class KeyboardViewController: UIInputViewController {
     var capsLockOn      = false
     var shiftOn         = true
     var defaultKeysOn   = true
+    var webSearchKeyboard = false
     
     var heightConstraint: (Any)? = nil
     var alphaPageConstraint: (Any)? = nil
@@ -35,6 +37,8 @@ class KeyboardViewController: UIInputViewController {
     var specialCharacterPageConstraint: (Any)? = nil
     
     @IBOutlet var pageCollection: [UIStackView]!
+    
+    @IBOutlet weak var webSearchPage: UIStackView!
     @IBOutlet weak var specialCharacterPage: UIStackView!
     @IBOutlet weak var numbersPage: UIStackView!
     @IBOutlet weak var betaPage: UIStackView!
@@ -53,6 +57,7 @@ class KeyboardViewController: UIInputViewController {
 
         alphaShiftButton.setTitle("\u{2b06}", for: .normal)
         betaShiftButton.setTitle("\u{21e7}", for: .normal)
+        webSearchShiftButton.setTitle("\u{21e7}", for: .normal)
         for settingButton in settingsCollection { settingButton.setTitle("\u{2699}", for: .normal) }
         for returnButton in returnCollection { returnButton.setTitle("\u{21B5}", for: .normal) }
         for backspaceButton in backspaceCollection { backspaceButton.setTitle("\u{232B}", for: .normal) }
@@ -72,6 +77,7 @@ class KeyboardViewController: UIInputViewController {
         
         checkForPunctuation()
         checkForNoPrecedingText()
+        checkKeyboardType()
     }
     
     func dismissViewControllerAndReloadKeyboard() {
@@ -140,6 +146,16 @@ class KeyboardViewController: UIInputViewController {
         )
     }
     
+    func checkKeyboardType() {
+        if (textDocumentProxy as UITextDocumentProxy).keyboardType == UIKeyboardType.webSearch {
+            webSearchKeyboard = true
+            shiftOn = false
+            showWebSearchKeyboard()
+        } else {
+            webSearchKeyboard = false
+        }
+    }
+    
     ////
     // Typing
     ////
@@ -182,6 +198,7 @@ class KeyboardViewController: UIInputViewController {
         alphaPage.isHidden   = true
         betaPage.isHidden    = true
         specialCharacterPage.isHidden = true
+        webSearchPage.isHidden = true
     }
     
     @IBAction func showSpecialCharacterKeyboard(_ sender: UIButton) {
@@ -189,6 +206,15 @@ class KeyboardViewController: UIInputViewController {
         alphaPage.isHidden   = true
         betaPage.isHidden    = true
         specialCharacterPage.isHidden = false
+        webSearchPage.isHidden = true
+    }
+    
+    func showWebSearchKeyboard() {
+        numbersPage.isHidden = true
+        alphaPage.isHidden   = true
+        betaPage.isHidden    = true
+        specialCharacterPage.isHidden = true
+        webSearchPage.isHidden = false
     }
     
     func toggleAlphaBetaBoards() {
@@ -197,13 +223,16 @@ class KeyboardViewController: UIInputViewController {
             alphaPage.isHidden   = false
             betaPage.isHidden    = true
             specialCharacterPage.isHidden = true
+            webSearchPage.isHidden = true
         } else {
             numbersPage.isHidden = true
             alphaPage.isHidden   = true
             betaPage.isHidden    = false
             specialCharacterPage.isHidden = true
+            webSearchPage.isHidden = true
         }
     }
+    
     
     @IBAction func shiftPressed(button: UIButton) {
         shiftOn = !shiftOn
@@ -225,10 +254,12 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func checkForNoPrecedingText() {
-        guard (textDocumentProxy.documentContextBeforeInput) != nil  else {
-            shiftOn = true
-            toggleAlphaBetaBoards()
-            return
+        if !webSearchKeyboard {
+            guard (textDocumentProxy.documentContextBeforeInput) != nil  else {
+                shiftOn = true
+                toggleAlphaBetaBoards()
+                return
+            }
         }
         
     }
@@ -293,7 +324,6 @@ class KeyboardViewController: UIInputViewController {
     
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
-        
         checkForPunctuation()
         checkForNoPrecedingText()
     }
