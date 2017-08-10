@@ -16,11 +16,12 @@ class KeyboardViewController: UIInputViewController {
     @IBOutlet var nextKeyboardCollection: [UIButton]!
     @IBOutlet var returnCollection:       [UIButton]!
     @IBOutlet var settingsCollection:     [UIButton]!
-    @IBOutlet var shiftCollection:        [UIButton]!
     @IBOutlet var spacebarCollection:     [UIButton]!
     
     @IBOutlet var boardBackground:  UIView!
     @IBOutlet weak var numAlphaKey: UIButton!
+    @IBOutlet weak var betaShiftButton: UIButton!
+    @IBOutlet weak var alphaShiftButton: UIButton!
     
     let colorDictionary = KeycapColors.getDictionary()
     var capsLockOn      = false
@@ -32,7 +33,6 @@ class KeyboardViewController: UIInputViewController {
     var betaPageConstraint: (Any)? = nil
     var numbersPageConstraint: (Any)? = nil
     var specialCharacterPageConstraint: (Any)? = nil
-
     
     @IBOutlet var pageCollection: [UIStackView]!
     @IBOutlet weak var specialCharacterPage: UIStackView!
@@ -51,7 +51,8 @@ class KeyboardViewController: UIInputViewController {
 
         // Perform custom UI setup here
 
-        for shiftButton in shiftCollection { shiftButton.setTitle("\u{2b06}", for: .normal) }
+        alphaShiftButton.setTitle("\u{2b06}", for: .normal)
+        betaShiftButton.setTitle("\u{21e7}", for: .normal)
         for settingButton in settingsCollection { settingButton.setTitle("\u{2699}", for: .normal) }
         for returnButton in returnCollection { returnButton.setTitle("\u{21B5}", for: .normal) }
         for backspaceButton in backspaceCollection { backspaceButton.setTitle("\u{232B}", for: .normal) }
@@ -150,7 +151,6 @@ class KeyboardViewController: UIInputViewController {
 
             shiftOn = false
             if alphaPage.isHidden == false { toggleAlphaBetaBoards() }
-            for shiftButton in shiftCollection { updateShift(button: shiftButton) }
         } else {
             (textDocumentProxy as UIKeyInput).insertText("\(string!.lowercased())")
         }
@@ -209,17 +209,6 @@ class KeyboardViewController: UIInputViewController {
         shiftOn = !shiftOn
         
         toggleAlphaBetaBoards()
-        
-        for shiftButton in shiftCollection { updateShift(button: shiftButton) }
-    }
-    
-    
-    func updateShift(button: UIButton) -> Void {
-        if shiftOn {
-            for shiftButton in shiftCollection { shiftButton.setTitle("\u{2b06}", for: .normal) }
-        } else {
-            for shiftButton in shiftCollection { shiftButton.setTitle("\u{21e7}", for: .normal) }
-        }
     }
     
     func checkForCapitalI() {
@@ -239,7 +228,6 @@ class KeyboardViewController: UIInputViewController {
         guard (textDocumentProxy.documentContextBeforeInput) != nil  else {
             shiftOn = true
             toggleAlphaBetaBoards()
-            for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             return
         }
         
@@ -252,11 +240,9 @@ class KeyboardViewController: UIInputViewController {
             case ". ", "? ", "! ":
                 shiftOn = true
                 toggleAlphaBetaBoards()
-                for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             default:
                 shiftOn = false
                 toggleAlphaBetaBoards()
-                for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             }
         }
     }
@@ -269,7 +255,6 @@ class KeyboardViewController: UIInputViewController {
                 
                 shiftOn = true
                 toggleAlphaBetaBoards()
-                for shiftButton in shiftCollection { updateShift(button: shiftButton) }
             }
         }
         
